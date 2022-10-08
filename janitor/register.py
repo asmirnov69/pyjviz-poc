@@ -4,8 +4,10 @@ import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
 # replaces own pandas methods with janitor
-old_dropna = pd.DataFrame.dropna; del pd.DataFrame.dropna
 old_drop = pd.DataFrame.drop; del pd.DataFrame.drop
+old_dropna = pd.DataFrame.dropna; del pd.DataFrame.dropna
+old_rename = pd.DataFrame.rename; del pd.DataFrame.rename
+old_assign = pd.DataFrame.assign; del pd.DataFrame.assign
 
 def get_new_node_label(node_label):
     if node_label and '-' in node_label:

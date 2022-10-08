@@ -15,3 +15,14 @@ def drop(df: pd.DataFrame, columns) -> pd.DataFrame:
     print("my drop")
     return pf.old_drop(df, columns = columns)
 
+@pf.register_dataframe_method
+def rename(df: pd.DataFrame, columns) -> pd.DataFrame:
+    print("my rename")
+    return pf.old_rename(df, columns = columns)
+
+@pf.register_dataframe_method
+def assign(df: pd.DataFrame, **kw) -> pd.DataFrame:
+    print("my assign")
+    return pf.old_assign(df, **kw)
+
+
