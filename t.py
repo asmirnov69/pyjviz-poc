@@ -22,7 +22,7 @@ if __name__ == "__main__":
             print(arg_n, arg_t)
             if isinstance(arg_t, typing.NewType):
                 print("base class:", arg_t.__supertype__)
-                
+
     #print(TestDF, TestDF.__name__, TestDF.__supertype__)
     #print(TestDF.columns)
 
