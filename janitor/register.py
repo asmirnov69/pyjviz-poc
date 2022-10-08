@@ -3,6 +3,9 @@ from functools import wraps
 import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
+# replaces own pandas methods with janitor
+old_drop_na = pd.DataFrame.dropna; del pd.DataFrame.dropna
+
 def get_new_node_label(node_label):
     if node_label and '-' in node_label:
         new_node_label = node_label.split('-')[0]
