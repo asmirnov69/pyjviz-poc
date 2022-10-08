@@ -2,7 +2,7 @@ import ipdb
 import typing
 import pandas as pd
 
-import register
+import janitor.register as register
 
 TestDF = typing.NewType('TestDF', pd.DataFrame)
 TestDF.columns = ['a']

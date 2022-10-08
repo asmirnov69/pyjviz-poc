@@ -4,13 +4,19 @@
 
 import pandas as pd
 
+from janitor.functions import *
+
+
 if __name__ == "__main__":
-    url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"
-
-    dirty = pd.read_excel(url, engine = 'openpyxl')
-    print(dirty)
-
     if 0:
+        url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"
+        dirty = pd.read_excel(url, engine = 'openpyxl')        
+    else:
+        dirty = pd.read_excel("./data/dirty_data.xlsx")
+        
+    #print(dirty)    
+
+    if 1:
         clean = (dirty
                  .clean_names()
                  .dropna(axis='columns', how='all')
