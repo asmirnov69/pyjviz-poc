@@ -1,0 +1,24 @@
+#
+# first example from https://github.com/samukweku/pyjanitor_presentation/blob/main/janitor/pyjanitor_PyData_Sydney.ipynb
+#
+
+import pandas as pd
+
+if __name__ == "__main__":
+    url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"
+
+    dirty = pd.read_excel(url, engine = 'openpyxl')
+    print(dirty)
+
+    if 0:
+        clean = (dirty
+                 .clean_names()
+                 .dropna(axis='columns', how='all')
+                 .dropna(axis='rows', how='all')
+                 .rename(columns={"%_allocated": "percent_allocated", "full_time_": "full_time"})
+                 .assign(certification = lambda df: df.certification.combine_first(df.certification_1))
+                 .drop(columns='certification_1')
+                 .assign(hire_date = lambda df: pd.to_datetime(df.hire_date, unit='D', origin='1899-12-30'))
+                 )
+        print(clean)
+        
