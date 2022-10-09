@@ -10,8 +10,8 @@ TestDF.columns = ['a']
 @register.register_dataframe_method
 def a0(df: pd.DataFrame) -> TestDF:
     print("a0")
-    df.attrs['type'] = TestDF
     return df
+    #return pd.DataFrame(df)
 
 if __name__ == "__main__":
     # configure pyjrdf
@@ -33,6 +33,6 @@ if __name__ == "__main__":
     df1 = df.a0()
     print(df1)
     #ipdb.set_trace()
-    print(df1.attrs['type'].columns)
+    #print(df1.attrs['type'].columns)
     
     

@@ -81,6 +81,7 @@ def clean_names(
         the specified length. Default None does not truncate.
     :returns: A pandas DataFrame.
     """
+    print("my cleanup")
     original_column_names = list(df.columns)
 
     if enforce_string:

@@ -1,9 +1,12 @@
+import ipdb
+import inspect
 import random, string
 from functools import wraps
 import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
 import janitor.pyjrdf as pyjrdf_mod
+import janitor.stack_counter as stack_counter
 
 pyjrdf = None
 def setup_pyjrdf_output(out_fn):
@@ -40,32 +43,45 @@ def register_dataframe_method(method):
 
             @wraps(method)
             def __call__(self, *args, **kwargs):
-                if not 'label' in self._obj.attrs:
-                    self._obj.attrs['label'] = get_new_node_label(None)
+                if not 'pipe_first' in self._obj.attrs:
+                    self._obj.attrs['pipe_first'] = [id(self._obj), stack_counter.SCF()]
 
-                obj_label = self._obj.attrs.get('label')
+                pipe_first, curr_scf = self._obj.attrs['pipe_first']
+                with curr_scf.get_sc() as sc:
+                    #print("sc level:", sc.scf.level)
+                    if sc.scf.level > 1:
+                        ret = method(self._obj, *args, **kwargs)
+                    else:
+                        pipe_this = id(self._obj)
 
-                arg1_label = None
-                for i in range(len(args)):
-                    print(type(args[i]))
-                    if isinstance(args[i], pd.DataFrame):
-                        if not 'label' in args[i].attrs:
-                            arg1_label = get_new_node_label(None)
-                        else:
-                            arg1_label = args[i].attrs.get('label')
-                print("------")
+                        #arg1_label = None
+                        #for i in range(len(args)):
+                        #    print(type(args[i]))
+                        #    if isinstance(args[i], pd.DataFrame):
+                        #        if not 'label' in args[i].attrs:
+                        #            arg1_label = get_new_node_label(None)
+                        #        else:
+                        #            arg1_label = args[i].attrs.get('label')
+                        #print("------")
 
-                ret = method(self._obj, *args, **kwargs)
-                
-                ret_label = get_new_node_label(obj_label)
-                #print("s p o:", obj_label, method.__name__, ret_label)
-                pyjrdf.dump_pyj_method_call(obj_label, method.__name__, ret_label)
-                if not arg1_label is None:
-                    #print("args s p o:", arg1_label, method.__name__, ret_label)
-                    pyjrdf.dump_pyj_method_call(arg1_label, method.__name__, ret_label)
-                            
-                #print("s p o:", id(self._obj), method.__name__, id(ret))
-                return ret
+                        ret = method(self._obj, *args, **kwargs)
+                        if id(ret) == id(self._obj):
+                            print("new to create new id:", id(self._obj), id(ret))
+                            ret = pd.DataFrame(self._obj)
+                            print("new id:", id(ret))
+
+                        if sc.scf.level == 1:
+                            pyjrdf.dump_triple(f"pyj:{pipe_this}", "pyj:pipe_head", f"pyj:{pipe_first}")
+                            pyjrdf.dump_pyj_method_call(f"pyj:{pipe_this}", method.__name__, f"pyj:{id(ret)}")
+                            #if not arg1_label is None:
+                            #    pyjrdf.dump_pyj_method_call(arg1_label, method.__name__, ret_label)
+
+                    if not 'pipe_first' in ret.attrs:
+                        print(f"return pipe dataframe {id(ret)} without pipe_first attr, setting up and continue")
+                        ret.attrs['pipe_first'] = pipe_first
+
+                        
+                    return ret
                 
         registered_methods[method.__name__] = method.__annotations__
         register_dataframe_accessor(method.__name__)(AccessorMethod)
