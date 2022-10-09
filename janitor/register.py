@@ -3,6 +3,13 @@ from functools import wraps
 import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
+import janitor.pyjrdf as pyjrdf_mod
+
+pyjrdf = None
+def setup_pyjrdf_output(out_fn):
+    out_fd = open(out_fn, "wt")
+    globals()['pyjrdf'] = pyjrdf_mod.pyjrdf(out_fd)
+
 # replaces own pandas methods with janitor
 old_drop = pd.DataFrame.drop; del pd.DataFrame.drop
 old_dropna = pd.DataFrame.dropna; del pd.DataFrame.dropna
@@ -15,7 +22,6 @@ def get_new_node_label(node_label):
     else:
         new_node_label = 'new'        
     return new_node_label + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-
 
 registered_methods = {}
 
@@ -58,9 +64,11 @@ def register_dataframe_method(method):
                 ret = method(self._obj, *args, **kwargs)
                 
                 ret_label = get_new_node_label(obj_label)
-                print("s p o:", obj_label, method.__name__, ret_label)
+                #print("s p o:", obj_label, method.__name__, ret_label)
+                pyjrdf.dump_pyj_method_call(obj_label, method.__name__, ret_label)
                 if not arg1_label is None:
-                    print("args s p o:", arg1_label, method.__name__, ret_label)
+                    #print("args s p o:", arg1_label, method.__name__, ret_label)
+                    pyjrdf.dump_pyj_method_call(arg1_label, method.__name__, ret_label)
                             
                 #print("s p o:", id(self._obj), method.__name__, id(ret))
                 return ret

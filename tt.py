@@ -4,10 +4,13 @@
 
 import pandas as pd
 
+import janitor.register as register
 from janitor.functions import *
 
-
 if __name__ == "__main__":
+    # configure pyjrdf
+    register.setup_pyjrdf_output("./test-rdf.ttl")
+    
     if 0:
         url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"
         dirty = pd.read_excel(url, engine = 'openpyxl')        
