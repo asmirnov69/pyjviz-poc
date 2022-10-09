@@ -14,6 +14,9 @@ def a0(df: pd.DataFrame) -> TestDF:
     return df
 
 if __name__ == "__main__":
+    # configure pyjrdf
+    register.setup_pyjrdf_output("./test-rdf.ttl")
+
     print(register.registered_methods)
     for rm_name, rm_anno in register.registered_methods.items():
         print(rm_name)
