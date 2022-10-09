@@ -10,12 +10,6 @@ def setup_pyjrdf_output(out_fn):
     out_fd = open(out_fn, "wt")
     globals()['pyjrdf'] = pyjrdf_mod.pyjrdf(out_fd)
 
-# replaces own pandas methods with janitor
-old_drop = pd.DataFrame.drop; del pd.DataFrame.drop
-old_dropna = pd.DataFrame.dropna; del pd.DataFrame.dropna
-old_rename = pd.DataFrame.rename; del pd.DataFrame.rename
-old_assign = pd.DataFrame.assign; del pd.DataFrame.assign
-
 def get_new_node_label(node_label):
     if node_label and '-' in node_label:
         new_node_label = node_label.split('-')[0]
