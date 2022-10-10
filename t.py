@@ -11,7 +11,6 @@ TestDF.columns = ['a']
 def a0(df: pd.DataFrame) -> TestDF:
     print("a0")
     return df
-    #return pd.DataFrame(df)
 
 if __name__ == "__main__":
     # configure pyjrdf
@@ -32,7 +31,5 @@ if __name__ == "__main__":
     df = pd.DataFrame({'a': range(10)})
     df1 = df.a0()
     print(df1)
-    #ipdb.set_trace()
-    #print(df1.attrs['type'].columns)
     
     
