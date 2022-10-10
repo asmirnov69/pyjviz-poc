@@ -57,15 +57,12 @@ def register_dataframe_method(method):
                     else:
                         pipe_this = id(self._obj)
 
-                        #arg1_label = None
-                        #for i in range(len(args)):
-                        #    print(type(args[i]))
-                        #    if isinstance(args[i], pd.DataFrame):
-                        #        if not 'label' in args[i].attrs:
-                        #            arg1_label = get_new_node_label(None)
-                        #        else:
-                        #            arg1_label = args[i].attrs.get('label')
-                        #print("------")
+                        arg1_df = None
+                        for aa in args:
+                            print(type(aa))
+                            if isinstance(aa, pd.DataFrame):
+                                arg1_df = aa
+                                break
 
                         ret = method(self._obj, *args, **kwargs)
                         if id(ret) == id(self._obj):
@@ -77,8 +74,8 @@ def register_dataframe_method(method):
                             #ipdb.set_trace()
                             pyjrdf.dump_triple(f"pyj:{pipe_this}", "pyj:pipe_head", f"pyj:{pipe_first}")
                             pyjrdf.dump_pyj_method_call(f"pyj:{pipe_this}", method.__name__, f"pyj:{id(ret)}")
-                            #if not arg1_label is None:
-                            #    pyjrdf.dump_pyj_method_call(arg1_label, method.__name__, ret_label)
+                            if not arg1_df is None:
+                                pyjrdf.dump_pyj_method_call(f"pyj:{id(arg1_df)}", method.__name__, f"pyj:{id(ret)}")
 
                     if not 'pipe_first' in ret.attrs:
                         print(f"return pipe dataframe {id(ret)} without pipe_first attr, setting up and continue")
