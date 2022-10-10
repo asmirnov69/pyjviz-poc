@@ -19,13 +19,18 @@ if __name__ == "__main__":
                         'value_2B': [1,5,9,15,1,4,6,3]})
 
 
-    res = df1.conditional_join(df2,
-                               ('id', 'id', "<"),
-                               df_columns = {'id':'df_id'},
-                               right_columns = {'id':'right_id'}
-                               )
+    if 1:
+        res1 = df1.conditional_join(df2,
+                                    ('id', 'id', "<"),
+                                    df_columns = {'id':'df_id'},
+                                    right_columns = {'id':'right_id'}
+                                    )
+        print(res1)
 
-    print(res)
-    
-
-    
+    if 1:
+        res2 = df1.select_columns('value_1').conditional_join(
+            df2.select_columns('val*'),
+            ('value_1', 'value_2A', '>'),
+            ('value_1', 'value_2B', '<'),
+        )
+        print(res2)

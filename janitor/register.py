@@ -21,6 +21,7 @@ def get_new_node_label(node_label):
     return new_node_label + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
 registered_methods = {}
+global_scf = stack_counter.SCF()
 
 def register_dataframe_method(method):
     """Register a function as a method attached to the Pandas DataFrame.
@@ -44,10 +45,12 @@ def register_dataframe_method(method):
             @wraps(method)
             def __call__(self, *args, **kwargs):
                 if not 'pipe_first' in self._obj.attrs:
-                    self._obj.attrs['pipe_first'] = [id(self._obj), stack_counter.SCF()]
+                    #ipdb.set_trace()
+                    print(f"no pipe_first attr for df {id(self._obj)}, setting up new one")
+                    self._obj.attrs['pipe_first'] = id(self._obj)
 
-                pipe_first, curr_scf = self._obj.attrs['pipe_first']
-                with curr_scf.get_sc() as sc:
+                pipe_first = self._obj.attrs['pipe_first']
+                with global_scf.get_sc() as sc:
                     #print("sc level:", sc.scf.level)
                     if sc.scf.level > 1:
                         ret = method(self._obj, *args, **kwargs)
@@ -71,6 +74,7 @@ def register_dataframe_method(method):
                             print("new id:", id(ret))
 
                         if sc.scf.level == 1:
+                            #ipdb.set_trace()
                             pyjrdf.dump_triple(f"pyj:{pipe_this}", "pyj:pipe_head", f"pyj:{pipe_first}")
                             pyjrdf.dump_pyj_method_call(f"pyj:{pipe_this}", method.__name__, f"pyj:{id(ret)}")
                             #if not arg1_label is None:
