@@ -72,10 +72,10 @@ def register_dataframe_method(method):
 
                         if sc.scf.level == 1:
                             #ipdb.set_trace()
-                            pyjrdf.dump_triple(f"pyj:{pipe_this}", "pyj:pipe_head", f"pyj:{pipe_first}")
-                            pyjrdf.dump_pyj_method_call(f"pyj:{pipe_this}", method.__name__, f"pyj:{id(ret)}")
+                            pyjrdf.dump_triple(f"<pyj:{pipe_this}>", "<pyj:pipe_head>", f"<pyj:{pipe_first}>")
+                            pyjrdf.dump_pyj_method_call(f"<pyj:{pipe_this}>", f"<pyj:{method.__name__}>", f"<pyj:{id(ret)}>")
                             if not arg1_df is None:
-                                pyjrdf.dump_pyj_method_call(f"pyj:{id(arg1_df)}", method.__name__, f"pyj:{id(ret)}")
+                                pyjrdf.dump_pyj_method_call(f"<pyj:{id(arg1_df)}>", f"<pyj:{method.__name__}>", f"<pyj:{id(ret)}>")
 
                     if not 'pipe_first' in ret.attrs:
                         print(f"return pipe dataframe {id(ret)} without pipe_first attr, setting up and continue")
