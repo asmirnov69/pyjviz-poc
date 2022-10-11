@@ -44,44 +44,22 @@ def register_dataframe_method(method):
 
             @wraps(method)
             def __call__(self, *args, **kwargs):
-                if not 'pipe_first' in self._obj.attrs:
-                    #ipdb.set_trace()
-                    print(f"no pipe_first attr for df {id(self._obj)}, setting up new one")
-                    self._obj.attrs['pipe_first'] = id(self._obj)
-
-                pipe_first = self._obj.attrs['pipe_first']
+                
                 with global_scf.get_sc() as sc:
-                    #print("sc level:", sc.scf.level)
+
                     if sc.scf.level > 1:
                         ret = method(self._obj, *args, **kwargs)
                     else:
+                        pyjrdf.register_dataframe(self._obj)
                         pipe_this = id(self._obj)
-
-                        arg1_df = None
-                        for aa in args:
-                            print(type(aa))
-                            if isinstance(aa, pd.DataFrame):
-                                arg1_df = aa
-                                break
 
                         ret = method(self._obj, *args, **kwargs)
                         if id(ret) == id(self._obj):
-                            print("new to create new id:", id(self._obj), id(ret))
                             ret = pd.DataFrame(self._obj)
-                            print("new id:", id(ret))
-
-                        if sc.scf.level == 1:
-                            #ipdb.set_trace()
-                            pyjrdf.dump_triple(f"<pyj:{pipe_this}>", "<pyj:pipe_head>", f"<pyj:{pipe_first}>")
-                            pyjrdf.dump_pyj_method_call(f"<pyj:{pipe_this}>", f"<pyj:{method.__name__}>", f"<pyj:{id(ret)}>")
-                            if not arg1_df is None:
-                                pyjrdf.dump_pyj_method_call(f"<pyj:{id(arg1_df)}>", f"<pyj:{method.__name__}>", f"<pyj:{id(ret)}>")
-
-                    if not 'pipe_first' in ret.attrs:
-                        print(f"return pipe dataframe {id(ret)} without pipe_first attr, setting up and continue")
-                        ret.attrs['pipe_first'] = pipe_first
-
+                        pyjrdf.register_dataframe(ret)
                         
+                        pyjrdf.dump_pyj_method_call(pipe_this, method.__name__, args, id(ret))
+
                     return ret
                 
         registered_methods[method.__name__] = method.__annotations__
