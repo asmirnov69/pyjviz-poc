@@ -6,20 +6,17 @@ import html
 import sys
 
 import rdflib
-import rdflib.extras.cmdlineutils
-from rdflib import XSD
+import pygraphviz as pgv
+from io import StringIO
 
 app = typer.Typer()
 
-@app.command()
-def dump_dot(pyjlog_ttl_fn):
-    g = rdflib.Graph()
-    g.parse(pyjlog_ttl_fn)
-
+def dump_dot_code(g):
     #ipdb.set_trace()
     pipes = [r for r in g.query("select ?pp ?pl { ?pp rdf:type <pyj:Pipe>; rdf:label ?pl }")]
+
+    out_fd = StringIO()
     
-    out_fd = sys.stdout
     print("""
     digraph G {
     #rankdir = "LR"
@@ -62,6 +59,20 @@ def dump_dot(pyjlog_ttl_fn):
             
     print("}", file = out_fd)
 
+    return out_fd.getvalue()
+
+@app.command()
+def dump_dot(pyjlog_ttl_fn):
+    g = rdflib.Graph()
+    g.parse(pyjlog_ttl_fn)
+
+    dot_code = dump_dot_code(g)
+    #print(dot_code)
+
+    png_g = pgv.AGraph()
+    png_g.from_string(dot_code)
+    png_g.draw("test-pyjviz.png", prog = 'dot')
+    return
 
 if __name__ == "__main__":
     app()
