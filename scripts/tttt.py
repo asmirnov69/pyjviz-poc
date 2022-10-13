@@ -2,6 +2,8 @@
 # example https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/conditional_join.ipynb
 #
 
+import sys; sys.path.append("..")
+
 import pandas as pd
 
 import janitor.register as register

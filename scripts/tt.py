@@ -2,6 +2,8 @@
 # first example from https://github.com/samukweku/pyjanitor_presentation/blob/main/janitor/pyjanitor_PyData_Sydney.ipynb
 #
 
+import sys; sys.path.append("..")
+
 import pandas as pd
 
 import janitor.register as register
@@ -15,7 +17,7 @@ if __name__ == "__main__":
         url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"
         dirty = pd.read_excel(url, engine = 'openpyxl')        
     else:
-        dirty = pd.read_excel("./data/dirty_data.xlsx")
+        dirty = pd.read_excel("../data/dirty_data.xlsx")
         
     #print(dirty)    
 
