@@ -11,6 +11,9 @@ class pyjrdf:
         self.registered_pipes = {}
 
         print("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .", file = out_fd)
+
+    def flush(self):
+        self.out_fd.flush()
         
     def dump_triple(self, subj, pred, obj):
         print(subj, pred, obj, ".", file = self.out_fd)

@@ -60,6 +60,7 @@ def register_dataframe_method(method):
                         
                         pyjrdf.dump_pyj_method_call(pipe_this, method.__name__, args, id(ret))
 
+                    pyjrdf.flush()
                     return ret
                 
         registered_methods[method.__name__] = method.__annotations__
