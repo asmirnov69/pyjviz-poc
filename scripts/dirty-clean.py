@@ -11,7 +11,7 @@ from janitor.functions import *
 
 if __name__ == "__main__":
     # configure pyjrdf
-    register.setup_pyjrdf_output("./test-rdf.ttl")
+    register.setup_pyjrdf_output("./rdflog.ttl")
     
     if 0:
         url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"

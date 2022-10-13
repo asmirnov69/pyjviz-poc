@@ -12,7 +12,7 @@ import janitor.pyjpipe as pyjpipe
 
 if __name__ == "__main__":
     # configure pyjrdf
-    register.setup_pyjrdf_output("./test-rdf.ttl")
+    register.setup_pyjrdf_output("./rdflog.ttl")
 
     df1 = pd.DataFrame({'id': [1,1,1,2,2,3],
                         'value_1': [2,5,7,1,3,4]})
