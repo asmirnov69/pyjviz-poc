@@ -22,6 +22,7 @@ def dump_dot(pyjlog_ttl_fn):
     out_fd = sys.stdout
     print("""
     digraph G {
+    #rankdir = "LR"
     fontname="Helvetica,Arial,sans-serif"
     node [fontname="Helvetica,Arial,sans-serif"]
     edge [fontname="Helvetica,Arial,sans-serif"]    
