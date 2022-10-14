@@ -13,9 +13,15 @@ def dump_dot_code(g):
     
     print("""
     digraph G {
-    #rankdir = "LR"
+    rankdir = "LR"
     fontname="Helvetica,Arial,sans-serif"
-    node [fontname="Helvetica,Arial,sans-serif"]
+    node [ 
+      style=filled
+      shape=rect
+      pencolor="#00000044" // frames color
+      fontname="Helvetica,Arial,sans-serif"
+      shape=plaintext
+    ]
     edge [fontname="Helvetica,Arial,sans-serif"]    
     """, file = out_fd)
     #print('rankdir = "TB"', file = out_fd)
@@ -23,10 +29,19 @@ def dump_dot_code(g):
     pipe_c = 0
     for pipe, pipe_label in pipes:        
         nodes = {}; node_c = 0
-        for s, _ in g.query("select ?s ?s { ?s rdf:type <pyj:DataFrame>; <pyj:pipe> ?pp}", initBindings = {'pp': pipe}):
+        for s, s_shape, s_col in g.query("select ?s ?s_shape ?s_col { ?s rdf:type <pyj:DataFrame>; <pyj:df-shape> ?s_shape; <pyj:df-columns> ?s_col; <pyj:pipe> ?pp}", initBindings = {'pp': pipe}):
             if not s in nodes:
                 nodes[s] = f'{pipe_c}_{node_c}'
-                print(f'node{pipe_c}_{node_c} [ label = "{s.toPython()}" ];', file = out_fd)
+                cols = "\n".join(['<tr><td align="left"><FONT POINT-SIZE="8px">' + html.escape(x) + "</FONT></td></tr>" for x in s_col.toPython().split(",")])
+                print(f"""node{pipe_c}_{node_c} [ 
+                color="#88000022"
+                shape = rect
+                label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+                         <tr> <td> <b>{s.toPython()}</b><br/>shape: {s_shape.toPython()}</td> </tr>
+                         <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
+                {cols}
+                         </table>>
+                ];""", file = out_fd)
                 node_c += 1
 
         for s, mn in g.query("select ?s ?mn { ?s rdf:type <pyj:Method>; rdf:label ?mn; <pyj:pipe> ?pp }", initBindings = {'pp': pipe}):

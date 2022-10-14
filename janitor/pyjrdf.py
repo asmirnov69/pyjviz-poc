@@ -30,6 +30,9 @@ class pyjrdf:
         if not id(df_ref) in self.registered_dataframes:
             self.registered_dataframes.add(id(df_ref))
             self.dump_triple(f"<pyj:{id(df_ref)}>", "rdf:type", "<pyj:DataFrame>")
+            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:df-shape>", f'"{df_ref.shape}"')
+            #ipdb.set_trace()
+            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:df-columns>", '"' + f"{','.join(df_ref.columns)}" + '"')
 
         curr_pipe_name = get_curr_pipe_name()
         df_id_pipe = (id(df_ref), curr_pipe_name)
