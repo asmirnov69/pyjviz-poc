@@ -51,14 +51,14 @@ def register_dataframe_method(method):
                         ret = method(self._obj, *args, **kwargs)
                     else:
                         pyjrdf.register_dataframe(self._obj)
-                        pipe_this = id(self._obj)
+                        ccr_this = id(self._obj)
 
                         ret = method(self._obj, *args, **kwargs)
                         if id(ret) == id(self._obj):
                             ret = pd.DataFrame(self._obj)
                         pyjrdf.register_dataframe(ret)
                         
-                        pyjrdf.dump_pyj_method_call(pipe_this, method.__name__, args, id(ret))
+                        pyjrdf.dump_pyj_method_call(ccr_this, method.__name__, args, id(ret))
 
                     pyjrdf.flush()
                     return ret
