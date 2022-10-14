@@ -22,14 +22,14 @@ if __name__ == "__main__":
         
     #print(dirty)    
 
-    clean = pyjccr.CCR("from_dirty_to_clean", lambda: dirty
-             .clean_names()
-             .dropna(axis='columns', how='all')
-             .dropna(axis='rows', how='all')
-             .rename(columns={"%_allocated": "percent_allocated", "full_time_": "full_time"})
-             .assign(certification = lambda df: df.certification.combine_first(df.certification_1))
-             .drop(columns='certification_1')
-             .assign(hire_date = lambda df: pd.to_datetime(df.hire_date, unit='D', origin='1899-12-30'))
-             )
+    clean = pyjccr.CCR("from_dirty_to_clean", lambda:
+                       dirty.clean_names()
+                       .dropna(axis='columns', how='all')
+                       .dropna(axis='rows', how='all')
+                       .rename(columns={"%_allocated": "percent_allocated", "full_time_": "full_time"})
+                       .assign(certification = lambda df: df.certification.combine_first(df.certification_1))
+                       .drop(columns='certification_1')
+                       .assign(hire_date = lambda df: pd.to_datetime(df.hire_date, unit='D', origin='1899-12-30'))
+                       )
     print(clean)
     
