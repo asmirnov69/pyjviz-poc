@@ -32,10 +32,18 @@ curr_cmp_name = "none"
 def get_curr_cmp_name():
     return curr_cmp_name
 
+class ChainedMethodsPipe:
+    def __init__(self, name, cmp_func):
+        self.name = name
+        self.cmp_func = cmp_func
+
+    def run(self):
+        print("CMP start:", self.name)
+        globals()['curr_cmp_name'] = self.name
+        ret = self.cmp_func()
+        print("cmp end:", self.name)
+        return ret
+        
 def call_cmp(cmp_name, cmp_func):
-    print("CMP start:", cmp_name)
-    globals()['curr_cmp_name'] = cmp_name
-    ret = cmp_func()
-    print("cmp end:", cmp_name)
-    return ret
+    return ChainedMethodsPipe(cmp_name, cmp_func).run()
 
