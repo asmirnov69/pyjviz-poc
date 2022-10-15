@@ -1,14 +1,14 @@
 import sys
 import pandas as pd
-from .pyjccr import *
+from .pyjcmp import *
 
 class pyjrdf:
     def __init__(self, out_fd):
         self.out_fd = out_fd
         self.registered_dataframes = set()
-        self.registered_dataframes_ccrs = set() # (dfid, ccr)
+        self.registered_dataframes_cmps = set() # (dfid, cmp)
         self.random_id = 0 # should be better way
-        self.registered_ccrs = {}
+        self.registered_cmps = {}
 
         print("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .", file = out_fd)
 
@@ -18,13 +18,13 @@ class pyjrdf:
     def dump_triple(self, subj, pred, obj):
         print(subj, pred, obj, ".", file = self.out_fd)
 
-    def get_ccr_uri(self, ccr_name):
-        if not ccr_name in self.registered_ccrs:
-            ccr_uri = f"<pyj:ccr:{self.random_id}>"; self.random_id += 1
-            self.registered_ccrs[ccr_name] = ccr_uri            
-            self.dump_triple(ccr_uri, "rdf:type", "<pyj:CCR>")
-            self.dump_triple(ccr_uri, "rdf:label", f'"{ccr_name}"')
-        return self.registered_ccrs.get(ccr_name)
+    def get_cmp_uri(self, cmp_name):
+        if not cmp_name in self.registered_cmps:
+            cmp_uri = f"<pyj:cmp:{self.random_id}>"; self.random_id += 1
+            self.registered_cmps[cmp_name] = cmp_uri            
+            self.dump_triple(cmp_uri, "rdf:type", "<pyj:CMP>")
+            self.dump_triple(cmp_uri, "rdf:label", f'"{cmp_name}"')
+        return self.registered_cmps.get(cmp_name)
         
     def register_dataframe(self, df_ref):
         if not id(df_ref) in self.registered_dataframes:
@@ -34,19 +34,19 @@ class pyjrdf:
             #ipdb.set_trace()
             self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:df-columns>", '"' + f"{','.join(df_ref.columns)}" + '"')
 
-        curr_ccr_name = get_curr_ccr_name()
-        df_id_ccr = (id(df_ref), curr_ccr_name)
-        if not df_id_ccr in self.registered_dataframes_ccrs:
-            self.registered_dataframes_ccrs.add(df_id_ccr)
-            ccr_uri = self.get_ccr_uri(curr_ccr_name)
-            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:ccr>", ccr_uri)
+        curr_cmp_name = get_curr_cmp_name()
+        df_id_cmp = (id(df_ref), curr_cmp_name)
+        if not df_id_cmp in self.registered_dataframes_cmps:
+            self.registered_dataframes_cmps.add(df_id_cmp)
+            cmp_uri = self.get_cmp_uri(curr_cmp_name)
+            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:cmp>", cmp_uri)
                 
     def dump_pyj_method_call(self, df_this, method_name, method_args, df_ret):
         method_call_subj = f"<pyj:method:{self.random_id}>"; self.random_id += 1
         self.dump_triple(method_call_subj, "rdf:type", "<pyj:Method>")
         self.dump_triple(method_call_subj, "rdf:label", f'"{method_name}"')
-        if get_curr_ccr_name():
-            self.dump_triple(method_call_subj, "<pyj:ccr>", self.get_ccr_uri(get_curr_ccr_name()))
+        if get_curr_cmp_name():
+            self.dump_triple(method_call_subj, "<pyj:cmp>", self.get_cmp_uri(get_curr_cmp_name()))
         
         self.dump_triple(f"<pyj:{df_this}>", "<pyj:method-call>", method_call_subj)
         self.dump_triple(method_call_subj, "<pyj:method-return>", f"<pyj:{df_ret}>")

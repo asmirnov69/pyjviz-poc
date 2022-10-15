@@ -1,5 +1,5 @@
 #
-# CCR added to the first example from https://github.com/samukweku/pyjanitor_presentation/blob/main/janitor/pyjanitor_PyData_Sydney.ipynb
+# CMP added to the first example from https://github.com/samukweku/pyjanitor_presentation/blob/main/janitor/pyjanitor_PyData_Sydney.ipynb
 #
 
 import sys; sys.path.append("..")
@@ -8,7 +8,7 @@ import pandas as pd
 
 import janitor.register as register
 from janitor.functions import *
-import janitor.pyjccr as pyjccr
+import janitor.pyjcmp as pyjcmp
 
 if __name__ == "__main__":
     # configure pyjrdf
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         
     #print(dirty)    
 
-    clean = pyjccr.CCR("from_dirty_to_clean", lambda:
+    clean = pyjcmp.call_cmp("from_dirty_to_clean", lambda:
                        dirty.clean_names()
                        .dropna(axis='columns', how='all')
                        .dropna(axis='rows', how='all')

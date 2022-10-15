@@ -8,7 +8,7 @@ import pandas as pd
 
 import janitor.register as register
 from janitor.functions import *
-import janitor.pyjccr as pyjccr
+import janitor.pyjcmp as pyjcmp
 
 if __name__ == "__main__":
     # configure pyjrdf
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
 
     if 1:
-        res1 = pyjccr.CCR("p1",
+        res1 = pyjcmp.call_cmp("p1",
                           lambda: df1.conditional_join(df2,
                                                        ('id', 'id', "<"),
                                                        df_columns = {'id':'df_id'},
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         print(res1)
 
     if 1:
-        res2 = pyjccr.CCR("p2",
+        res2 = pyjcmp.call_cmp("p2",
                            lambda: df1.select_columns('value_1').conditional_join(
                                df2.select_columns('val*'),
                                ('value_1', 'value_2A', '>'),
