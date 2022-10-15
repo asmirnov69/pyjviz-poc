@@ -1,6 +1,6 @@
 #import ipdb
 import typer, sys
-sys.path.append("..")
+sys.path.append("../..")
 
 import collections
 import html

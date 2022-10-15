@@ -9,8 +9,11 @@ Besides feature proposals the repo code is trying illustrate the idea of using R
 
 With immediate focus to visualization using rdflib-SPARQL and graphviz we can start the discussion (and possibly planning) around bigger idea of rdf logs and similarily collected data to be stored in graph database. This would be database of research&production activity which uses SPARQL and/or opencypher to provide the way to connect collected data to other knowledge graph systems (e.g. Obsidian). Such database and its integrations is expected to help with research experiments and production tasks in a new way where it will be possible to search through past work results using one's favorite knowledge-base exploration system (and maybe build new ones).
 
+## How to run examples
 
+Examples are in notebooks/ and scripts/. You can run it without pyjanitor. I am running evrything using venv and pip installs. Both scripts and notebooks refers to code in pyjviz-poc/janitor via dircet usage of sys.path. So if you want to run scripts your current working directory should be pyjviz-poc/scripts.
 
+scrips and nodebooks will create or overwrite file rdflog.ttl. This is the trace of chained mathod executions. To see diagram of the trace call show-rdflog.py - it will produce rdflog.ttl.png which you can view in any suitable png viewer (browser, jupyter etc)
 
 ## repo directories
 
@@ -19,7 +22,6 @@ With immediate focus to visualization using rdflib-SPARQL and graphviz we can st
 - learn-graphviz/ -- place where some examples stored to help understand how thing work in graphviz
 - notebooks/ -- pyjanitor jupyter notebook examples with some additions to make show-rdflog.ipynb notebook work
 - scripts/ -- pyjanitor examples in the form of scripts. you will need to be in this directory to run them
-
 
 ## Chained Methods Pipe - some details
 
@@ -58,6 +60,7 @@ class ChainedMethodPipe:
 
 def call_cmp(name, pb):
     return ChainedMethodPipe(name, pb).run()
+```
 
 
 ```python
