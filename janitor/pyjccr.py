@@ -23,7 +23,7 @@ Proposed pyjanitor feature called CCR suppose to introduce similar notion with s
       .rename_column("full_time_", "full_time")
    )
 
-CCR call result is identical to original example. It introduces name of CCR to be from_dirty_to_clean. This name can later be used to identify traces of exactly this CCR call.
+CCR call result is identical to original example. It introduces name of CCR to be from_dirty_to_clean. This name can later be used to identify traces of exactly this CCR call. See also the example scripts/dirty-clean-w-ccr.py
 
 """
 
