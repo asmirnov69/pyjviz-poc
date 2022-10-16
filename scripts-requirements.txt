@@ -1,0 +1,12 @@
+et-xmlfile==1.1.0
+graphviz==0.20.1
+isodate==0.6.1
+multipledispatch==0.6.0
+numpy==1.23.4
+openpyxl==3.0.10
+pandas==1.5.0
+pyparsing==3.0.9
+python-dateutil==2.8.2
+pytz==2022.4
+rdflib==6.2.0
+six==1.16.0
