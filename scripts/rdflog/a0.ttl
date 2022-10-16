@@ -1,16 +1,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-<pyj:140666343780944> rdf:type <pyj:DataFrame> .
-<pyj:140666343780944> <pyj:df-shape> "(10, 1)" .
-<pyj:140666343780944> <pyj:df-columns> "a" .
+<pyj:140121596894160> rdf:type <pyj:DataFrame> .
+<pyj:140121596894160> <pyj:df-shape> "(10, 1)" .
+<pyj:140121596894160> <pyj:df-columns> "a" .
 <pyj:cmp:0> rdf:type <pyj:CMP> .
 <pyj:cmp:0> rdf:label "none" .
-<pyj:140666343780944> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140666343781472> rdf:type <pyj:DataFrame> .
-<pyj:140666343781472> <pyj:df-shape> "(10, 1)" .
-<pyj:140666343781472> <pyj:df-columns> "a" .
-<pyj:140666343781472> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140121596894160> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140121596894688> rdf:type <pyj:DataFrame> .
+<pyj:140121596894688> <pyj:df-shape> "(10, 1)" .
+<pyj:140121596894688> <pyj:df-columns> "a" .
+<pyj:140121596894688> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:1> rdf:type <pyj:Method> .
 <pyj:method:1> rdf:label "a0" .
 <pyj:method:1> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140666343780944> <pyj:method-call> <pyj:method:1> .
-<pyj:method:1> <pyj:method-return> <pyj:140666343781472> .
+<pyj:140121596894160> <pyj:method-call> <pyj:method:1> .
+<pyj:method:1> <pyj:method-return> <pyj:140121596894688> .
