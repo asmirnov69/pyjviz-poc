@@ -3,6 +3,9 @@ from functools import wraps
 import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
+import warnings
+warnings.filterwarnings("ignore", category = UserWarning)
+
 import janitor.pyjrdf as pyjrdf_mod
 
 class StackCounter:

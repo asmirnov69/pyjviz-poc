@@ -77,10 +77,14 @@ def get_rdflog_filename(argv0):
     rdflog_fn = os.path.basename(argv0).replace(".py", ".ttl")
     return os.path.join("rdflog", rdflog_fn)
 
-def render_rdflog(rdflog_ttl_fn):
+def render_rdflog(rdflog_ttl_fn, verbose = True):
     g = rdflib.Graph()
     g.parse(rdflog_ttl_fn)
 
     dot_code = dump_dot_code(g)
     gv_src = gv.Source(dot_code)
     gv_src.render(rdflog_ttl_fn + '.dot', format = 'png', engine = 'dot')
+
+    if verbose:
+        print(f"\nsaved diagram file {rdflog_ttl_fn + '.dot' + '.png'}")
+    
