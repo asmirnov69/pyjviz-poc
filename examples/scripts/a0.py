@@ -1,10 +1,12 @@
 #import ipdb
+import os.path
 import sys; sys.path.append("../..")
 
 import typing
 import pandas as pd
 
 import janitor.register as register
+import janitor.pyjviz as pyjviz
 
 TestDF = typing.NewType('TestDF', pd.DataFrame)
 TestDF.columns = ['a']
@@ -16,7 +18,8 @@ def a0(df: pd.DataFrame) -> TestDF:
 
 if __name__ == "__main__":
     # configure pyjrdf
-    register.setup_pyjrdf_output("./rdflog.ttl")
+    rdflog_fn = pyjviz.get_rdflog_filename(sys.argv[0])
+    register.setup_pyjrdf_output(rdflog_fn)
 
     print(register.registered_methods)
     for rm_name, rm_anno in register.registered_methods.items():
@@ -34,4 +37,4 @@ if __name__ == "__main__":
     df1 = df.a0()
     print(df1)
     
-    
+    pyjviz.render_rdflog(rdflog_fn)

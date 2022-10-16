@@ -1,15 +1,38 @@
-import ipdb
-import inspect
-import random, string
+import os.path
 from functools import wraps
 import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
 import janitor.pyjrdf as pyjrdf_mod
-import janitor.stack_counter as stack_counter
+
+class StackCounter:
+    def __init__(self, scf):
+        self.scf = scf
+        
+    def __enter__(self):
+        #print("StackCounter:__enter__", id(self))
+        self.scf.level += 1
+        return self
+
+    def __exit__(self, type, value, traceback):
+        #print("StackCounter:__exit__", id(self))
+        self.scf.level -= 1
+        
+class SCF:
+    def __init__(self):
+        self.level = 0
+        
+    def get_sc(self):
+        return StackCounter(self)
+
+# -----------------------------------------------------------
 
 pyjrdf = None
 def setup_pyjrdf_output(out_fn):
+    out_dir = os.path.dirname(out_fn)    
+    if out_dir != "" and not os.path.exists(out_dir):
+        print("setup_pyjrdf_output:", out_dir)
+        os.makedirs(out_dir)
     out_fd = open(out_fn, "wt")
     globals()['pyjrdf'] = pyjrdf_mod.pyjrdf(out_fd)
 
@@ -21,7 +44,7 @@ def get_new_node_label(node_label):
     return new_node_label + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
 registered_methods = {}
-global_scf = stack_counter.SCF()
+global_scf = SCF()
 
 def register_dataframe_method(method):
     """Register a function as a method attached to the Pandas DataFrame.

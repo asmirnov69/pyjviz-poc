@@ -1,9 +1,12 @@
+import os.path
 import collections
 import html
 import sys
 
 import rdflib
 from io import StringIO
+
+import graphviz as gv
 
 def dump_dot_code(g):
     #ipdb.set_trace()
@@ -69,3 +72,15 @@ def dump_dot_code(g):
     print("}", file = out_fd)
 
     return out_fd.getvalue()
+
+def get_rdflog_filename(argv0):
+    rdflog_fn = os.path.basename(argv0).replace(".py", ".ttl")
+    return os.path.join("rdflog", rdflog_fn)
+
+def render_rdflog(rdflog_ttl_fn):
+    g = rdflib.Graph()
+    g.parse(rdflog_ttl_fn)
+
+    dot_code = dump_dot_code(g)
+    gv_src = gv.Source(dot_code)
+    gv_src.render(rdflog_ttl_fn + '.dot', format = 'png', engine = 'dot')

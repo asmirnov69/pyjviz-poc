@@ -11,11 +11,11 @@ Consider an example from https://github.com/pyjanitor-devs/pyjanitor/blob/dev/ex
       .rename_column("full_time_", "full_time")
    )
 
-This is an example of CMP idea in use: each new method call of object df returns somthing which can be called by next method.
+This is an example of CMP idea in use: each new method call of object df returns something which can be use for next method call
 
-Proposed pyjanitor feature called CMP suppose to introduce similar notion with some important additions:
+ChainedMethodsPipe is to provide some additional functionality: it will same some additional rdf triples into program log:
 
-   df_clean = call_cmp("from_dirty_to_clean", lambda:
+   df_clean_cmp = ChainedMethodsPipe("from_dirty_to_clean", lambda:
       df
       .clean_names()
       .remove_empty()
@@ -23,7 +23,7 @@ Proposed pyjanitor feature called CMP suppose to introduce similar notion with s
       .rename_column("full_time_", "full_time")
    )
 
-CMP call result is identical to original example. It introduces name of CMP to be from_dirty_to_clean. This name can later be used to identify traces of exactly this CMP call. See also the example scripts/dirty-clean-w-cmp.py
+   df_clean = df_clean_cmp.run()
 
 """
 
