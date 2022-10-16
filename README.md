@@ -22,8 +22,8 @@ scrips and notebooks will create or overwrite file rdflog.ttl. This is the trace
 
 - data/ -- some data to be used by examples in scripts/ and notebooks/
 - janitor/ -- this is mostly code form pyjanitor/janitor to make original pyjanitor examples work. The few files are added to create some additional functionality which is the core of the proposal. That additional files are described below in ...
-- examples/notebooks/ -- pyjanitor jupyter notebook examples with some additions to make show-rdflog.ipynb notebook work
-- examples/scripts/ -- pyjanitor examples in the form of scripts. you will need to be in this directory to run them
+- notebooks/ -- pyjanitor jupyter notebook examples with some additions to make show-rdflog.ipynb notebook work
+- scripts/ -- pyjanitor examples in the form of scripts. you will need to be in this directory to run them
 
 ## Chained Methods Pipe - some details
 
