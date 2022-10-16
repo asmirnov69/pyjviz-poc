@@ -1,6 +1,6 @@
 #import ipdb
 import os.path
-import sys; sys.path.append("../..")
+import sys; sys.path.append("..")
 
 import typing
 import pandas as pd

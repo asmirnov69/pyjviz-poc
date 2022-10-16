@@ -1,7 +1,7 @@
 #
 # example https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/conditional_join.ipynb
 #
-import sys; sys.path.append("../..")
+import sys; sys.path.append("..")
 import os.path
 
 import pandas as pd
