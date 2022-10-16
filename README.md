@@ -32,7 +32,7 @@ cd scripts # pwd should show 'pyjviz-poc/scripts'
 python a0.py
 python dirty-clean.py
 python dirty-clean-w-cmp.py
-python conditional_join_w_cmp.py
+python conditional_join.py
 python conditional_join_w_cmp.py
 ```
 
