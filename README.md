@@ -14,24 +14,38 @@ Immediate focus is to have png diagram files generation working using rdflib wit
 
 ## How to run examples
 
-To run scripts you need to change current working directoty to scripts and then run it like this:
+For venv users it is possible to use this sequence:
 
 ```
-cd scripts
+python3 -m venv ~/venv/pyjviz
+source ~/venv/pyjviz/bin/active
+
+cd pyjviz-poc
+pip install -r requirements.txt
+```
+
+After that one can run scripts from pyjviz-poc/scripts directory
+
+```
+cd scripts # pwd should show 'pyjviz-poc/scripts'
+
 python a0.py
 python dirty-clean.py
+python dirty-clean-w-cmp.py
+python conditional_join_w_cmp.py
+python conditional_join_w_cmp.py
 ```
 
-It will produce rdf log and png in subdir scripts/rdflog.
+Results will be on the screen and in directory pyjviz-poc/scripts/rdflog
 
-Notebooks can be run as usual via jupyter. Diagram will be shown at last cell output.
+You should be able to run notebooks in pyjviz-poc/notebooks using packages listed in pyjviz-poc/requirements.txt
+Diagram will be shown at the last cell output.
 
-## install commands
-
-```
-pip install -r scripts-requirements.txt
-```
+Install commands for jupyterlab which were working for me (after pip install -r requirements.txt):
 
 ```
+cd pyjviz-poc
 pip install jupyterlab
+jupyter lab
 ```
+
