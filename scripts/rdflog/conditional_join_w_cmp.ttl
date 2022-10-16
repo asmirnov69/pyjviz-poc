@@ -1,0 +1,53 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+<pyj:140002316392800> rdf:type <pyj:DataFrame> .
+<pyj:140002316392800> <pyj:df-shape> "(6, 2)" .
+<pyj:140002316392800> <pyj:df-columns> "id,value_1" .
+<pyj:cmp:0> rdf:type <pyj:CMP> .
+<pyj:cmp:0> rdf:label "p1" .
+<pyj:140002316392800> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140002316397120> rdf:type <pyj:DataFrame> .
+<pyj:140002316397120> <pyj:df-shape> "(14, 2)" .
+<pyj:140002316397120> <pyj:df-columns> "df_id,right_id" .
+<pyj:140002316397120> <pyj:cmp> <pyj:cmp:0> .
+<pyj:method:1> rdf:type <pyj:Method> .
+<pyj:method:1> rdf:label "conditional_join" .
+<pyj:method:1> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140002316392800> <pyj:method-call> <pyj:method:1> .
+<pyj:method:1> <pyj:method-return> <pyj:140002316397120> .
+<pyj:140002333124224> rdf:type <pyj:DataFrame> .
+<pyj:140002333124224> <pyj:df-shape> "(8, 3)" .
+<pyj:140002333124224> <pyj:df-columns> "id,value_2A,value_2B" .
+<pyj:140002333124224> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140002333124224> <pyj:method-call-arg> <pyj:method:1> .
+<pyj:cmp:2> rdf:type <pyj:CMP> .
+<pyj:cmp:2> rdf:label "p2" .
+<pyj:140002316392800> <pyj:cmp> <pyj:cmp:2> .
+<pyj:140002316398512> rdf:type <pyj:DataFrame> .
+<pyj:140002316398512> <pyj:df-shape> "(6, 1)" .
+<pyj:140002316398512> <pyj:df-columns> "value_1" .
+<pyj:140002316398512> <pyj:cmp> <pyj:cmp:2> .
+<pyj:method:3> rdf:type <pyj:Method> .
+<pyj:method:3> rdf:label "select_columns" .
+<pyj:method:3> <pyj:cmp> <pyj:cmp:2> .
+<pyj:140002316392800> <pyj:method-call> <pyj:method:3> .
+<pyj:method:3> <pyj:method-return> <pyj:140002316398512> .
+<pyj:140002333124224> <pyj:cmp> <pyj:cmp:2> .
+<pyj:140002316398704> rdf:type <pyj:DataFrame> .
+<pyj:140002316398704> <pyj:df-shape> "(8, 2)" .
+<pyj:140002316398704> <pyj:df-columns> "value_2A,value_2B" .
+<pyj:140002316398704> <pyj:cmp> <pyj:cmp:2> .
+<pyj:method:4> rdf:type <pyj:Method> .
+<pyj:method:4> rdf:label "select_columns" .
+<pyj:method:4> <pyj:cmp> <pyj:cmp:2> .
+<pyj:140002333124224> <pyj:method-call> <pyj:method:4> .
+<pyj:method:4> <pyj:method-return> <pyj:140002316398704> .
+<pyj:140002316400528> rdf:type <pyj:DataFrame> .
+<pyj:140002316400528> <pyj:df-shape> "(5, 3)" .
+<pyj:140002316400528> <pyj:df-columns> "value_1,value_2A,value_2B" .
+<pyj:140002316400528> <pyj:cmp> <pyj:cmp:2> .
+<pyj:method:5> rdf:type <pyj:Method> .
+<pyj:method:5> rdf:label "conditional_join" .
+<pyj:method:5> <pyj:cmp> <pyj:cmp:2> .
+<pyj:140002316398512> <pyj:method-call> <pyj:method:5> .
+<pyj:method:5> <pyj:method-return> <pyj:140002316400528> .
+<pyj:140002316398704> <pyj:method-call-arg> <pyj:method:5> .

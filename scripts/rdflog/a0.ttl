@@ -1,0 +1,16 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+<pyj:140342773199344> rdf:type <pyj:DataFrame> .
+<pyj:140342773199344> <pyj:df-shape> "(10, 1)" .
+<pyj:140342773199344> <pyj:df-columns> "a" .
+<pyj:cmp:0> rdf:type <pyj:CMP> .
+<pyj:cmp:0> rdf:label "none" .
+<pyj:140342773199344> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140342773199872> rdf:type <pyj:DataFrame> .
+<pyj:140342773199872> <pyj:df-shape> "(10, 1)" .
+<pyj:140342773199872> <pyj:df-columns> "a" .
+<pyj:140342773199872> <pyj:cmp> <pyj:cmp:0> .
+<pyj:method:1> rdf:type <pyj:Method> .
+<pyj:method:1> rdf:label "a0" .
+<pyj:method:1> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140342773199344> <pyj:method-call> <pyj:method:1> .
+<pyj:method:1> <pyj:method-return> <pyj:140342773199872> .
