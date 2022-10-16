@@ -79,4 +79,10 @@ res_df = call_cmp(“p1”, lambda: df.fff().ggg(df1_cmp.run()).zzz())
 # async call and wait
 df1_cmp = ChainedMethodCall(“p2p2”, lambda: df1.hhh()).run_async()
 res_df = call_cmp(“p1p”, lambda: df.fff().ggg(df1_cmp.wait()).zzz())
+
+# fork
+
+left_df, right_df = df1.aaa().fork("left", lambda x: x.left(), "right", lambda x: x.right())
+call_cmp("left", lambda: left_df.ccc().join(call_cmp("right", right_df.ccc()))
+
 ```
