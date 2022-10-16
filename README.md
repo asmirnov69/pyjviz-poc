@@ -26,3 +26,12 @@ It will produce rdf log and png in subdir scripts/rdflog.
 
 Notebooks can be run as usual via jupyter. Diagram will be shown at last cell output.
 
+## install commands
+
+```
+pip install -r script-requirements.txt
+```
+
+```
+pip install jupyterlab
+```
