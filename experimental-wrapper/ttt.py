@@ -1,5 +1,6 @@
 import ipdb
-import ast, inspect
+import ast, inspect, bytecode
+import dis
 import pandas as pd
 
 class CallWrapper:
@@ -36,7 +37,19 @@ def call_cmp(name, pb):
     # ipdb> pb.__code__.co_code
     # b't\x00\xa0\x01\xa1\x00S\x00'
     ipdb.set_trace()
-    ret = pb()
+
+    print(dis.dis(pb)) # show VM disassembly
+    if 0:
+        # unmodified call
+        ret = pb()
+    else:
+        # bytecode module docs: https://bytecode.readthedocs.io/en/latest/usage.html
+        instructions = bytecode.ConcreteBytecode.from_code(pb.__code__)
+        print([x for x in instructions])
+        # we can modify instructions here, see https://bytecode.readthedocs.io/en/latest/usage.html#concrete-bytecode
+        pb.__code__ = bytecode.ConcreteBytecode.to_code(instructions)
+        ret = pb()
+
     print("all done")
     return ret.d_o
     
@@ -49,7 +62,7 @@ methods_d['my_transform'] = my_transform
 
 
 df = pd.DataFrame({'a': range(10)})
-if 0:
+if 1:
     # note that we need to use Wrapper to start the chain
     ret = call_cmp("test-pipe", lambda: Wrapper(df).my_transform())
 else:
