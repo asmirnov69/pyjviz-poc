@@ -1,3 +1,5 @@
+# pyjrdf to keep all rdf logging functionality
+#
 import sys
 import pandas as pd
 from .pyjcmp import *

@@ -1,3 +1,5 @@
+# the code in this file is based on https://github.com/Zsailer/pandas_flavor/blob/master/pandas_flavor/register.py
+#
 import os.path
 from functools import wraps
 import pandas as pd
@@ -30,6 +32,7 @@ class SCF:
 
 # -----------------------------------------------------------
 
+# pyjrdf global object to be initialized in __main__
 pyjrdf = None
 def setup_pyjrdf_output(out_fn):
     out_dir = os.path.dirname(out_fn)    
@@ -46,7 +49,7 @@ def get_new_node_label(node_label):
         new_node_label = 'new'        
     return new_node_label + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
-registered_methods = {}
+#registered_methods = {}
 global_scf = SCF()
 
 def register_dataframe_method(method):
@@ -68,6 +71,8 @@ def register_dataframe_method(method):
             def __init__(self, pandas_obj):
                 self._obj = pandas_obj
 
+            # this method was modified to collect enough infomation about the call
+            # to pass that to pyjrdf method calls which responsible for rdf triple dumping to rdf log file
             @wraps(method)
             def __call__(self, *args, **kwargs):
                 
@@ -88,8 +93,9 @@ def register_dataframe_method(method):
 
                     pyjrdf.flush()
                     return ret
-                
-        registered_methods[method.__name__] = method.__annotations__
+
+        #registered_methods[method.__name__] = method.__annotations__
+        # this is location where pandas.api.extensions used to register method caller class
         register_dataframe_accessor(method.__name__)(AccessorMethod)
 
         return method
