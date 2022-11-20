@@ -1,18 +1,26 @@
 # pyjrdf to keep all rdf logging functionality
 #
 import sys
+import os.path
 import pandas as pd
-from .pyjcmp import *
+from .pyjcmp import get_curr_cmp_name
 
-class pyjrdf:
-    def __init__(self, out_fd):
-        self.out_fd = out_fd
+def open_pyjrdf_output__(out_fn):
+    out_dir = os.path.dirname(out_fn)    
+    if out_dir != "" and not os.path.exists(out_dir):
+        print("setup_pyjrdf_output:", out_dir)
+        os.makedirs(out_dir)
+    out_fd = open(out_fn, "wt")
+    return out_fd
+
+class PYJRDF:    
+    def __init__(self, out_filename):        
+        self.out_fd = open_pyjrdf_output__(out_filename)
         self.registered_dataframes = set()
         self.registered_dataframes_cmps = set() # (dfid, cmp)
         self.random_id = 0 # should be better way
         self.registered_cmps = {}
-
-        print("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .", file = out_fd)
+        print("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .", file = self.out_fd)
 
     def flush(self):
         self.out_fd.flush()
@@ -58,4 +66,17 @@ class pyjrdf:
                 self.register_dataframe(arg)
                 self.dump_triple(f"<pyj:{id(arg)}>", "<pyj:method-call-arg>", method_call_subj)
     
+    def dataframe_redirected_call(self, call_level, pandas_obj, method, *args, **kwargs):
+        if call_level > 1:
+            ret = method(pandas_obj, *args, **kwargs)
+        else:
+            self.register_dataframe(pandas_obj)
+            ret = method(pandas_obj, *args, **kwargs)
+            if id(ret) == id(pandas_obj):
+                ret = pd.DataFrame(pandas_obj)
+            self.register_dataframe(ret)
+            self.dump_pyj_method_call(id(pandas_obj), method.__name__, args, id(ret))
 
+        self.flush()
+        
+        return ret

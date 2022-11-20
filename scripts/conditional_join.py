@@ -7,14 +7,15 @@ import os.path
 import pandas as pd
 
 import janitor.register as register
-from janitor.functions import *
-
 import janitor.pyjviz as pyjviz
+import janitor.pyjrdf as pyjrdf
+
+from janitor.functions import *
 
 if __name__ == "__main__":
     # configure pyjrdf
     rdflog_fn = pyjviz.get_rdflog_filename(sys.argv[0])
-    register.setup_pyjrdf_output(rdflog_fn)
+    register.pandas_call_reporting_obj = pyjrdf.PYJRDF(rdflog_fn)
 
     df1 = pd.DataFrame({'id': [1,1,1,2,2,3],
                         'value_1': [2,5,7,1,3,4]})
