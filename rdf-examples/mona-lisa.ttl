@@ -1,0 +1,18 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<Bob> rdf:type <Person> .
+<Bob> <is_a_friend> <Alice> .
+<Alice> rdf:type <Person> .
+<Bob> <is_born_on> "19900704" .
+<Bob> <is_interested_in> <the_Mona_Lisa> .
+<Mona_Lisa> <was_created_by> <Loenard_da_Vinci> .
+<Bob> <visits_very_often_the_website> <https://www.google.com> .
+<Loenard_da_Vinci> rdf:type <Person> .
+
+<the_Mona_Lisa> rdf:type <FamousPainting> .
+<black_square> rdf:type <ControversialPainting> .
+
+<Painting> rdf:type rdfs:Class .
+<FamousPainting> rdfs:subClassOf <Painting> .
+<ControversialPainting> rdfs:subClassOf <Painting> .
