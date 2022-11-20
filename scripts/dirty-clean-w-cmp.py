@@ -7,7 +7,7 @@ import pandas as pd
 
 import janitor.pyjviz as pyjviz
 from janitor.pyjrdflogger import RDFLogger
-import janitor.pyjcmp as pyjcmp
+from janitor.pyjrdflogger import call_cmp
 
 from janitor.functions import *
 
@@ -24,15 +24,15 @@ if __name__ == "__main__":
         
     #print(dirty)    
 
-    clean = pyjcmp.call_cmp("from_dirty_to_clean", lambda:
-                       dirty.clean_names()
-                       .dropna(axis='columns', how='all')
-                       .dropna(axis='rows', how='all')
-                       .rename(columns={"%_allocated": "percent_allocated", "full_time_": "full_time"})
-                       .assign(certification = lambda df: df.certification.combine_first(df.certification_1))
-                       .drop(columns='certification_1')
-                       .assign(hire_date = lambda df: pd.to_datetime(df.hire_date, unit='D', origin='1899-12-30'))
-                       )
+    clean = call_cmp("from_dirty_to_clean", lambda:
+                     dirty.clean_names()
+                     .dropna(axis='columns', how='all')
+                     .dropna(axis='rows', how='all')
+                     .rename(columns={"%_allocated": "percent_allocated", "full_time_": "full_time"})
+                     .assign(certification = lambda df: df.certification.combine_first(df.certification_1))
+                     .drop(columns='certification_1')
+                     .assign(hire_date = lambda df: pd.to_datetime(df.hire_date, unit='D', origin='1899-12-30'))
+                     )
     print(clean)
     
     pyjviz.render_rdflog(rdflog_fn)

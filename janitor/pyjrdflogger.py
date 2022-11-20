@@ -1,6 +1,6 @@
 # pyjrdf to keep all rdf logging functionality
 #
-import sys, threading
+import sys
 import os.path
 import pandas as pd
 
@@ -18,12 +18,30 @@ def open_pyjrdf_output__(out_fn):
     
     return out_fd
 
+ChainedMethodsPipe_curr_cmp_name = None
 def get_curr_cmp_name__():
-    thread_locals = threading.local()
     ret = "none"
-    if hasattr(thread_locals, 'ChainedMethodPipe_curr_cmp_name'):
-        ret = thread_locals.ChainedMethodPipe_curr_cmp_name
+    global ChainedMethodsPipe_curr_cmp_name    
+    if ChainedMethodsPipe_curr_cmp_name:
+        ret = ChainedMethodsPipe_curr_cmp_name
     return ret
+
+class ChainedMethodsPipe:
+    def __init__(self, name, cmp_func):
+        self.name = name
+        self.cmp_func = cmp_func
+
+    def run(self):
+        print("CMP start:", self.name)
+        global ChainedMethodsPipe_curr_cmp_name
+        ChainedMethodsPipe_curr_cmp_name = self.name
+        ret = self.cmp_func()
+        print("cmp end:", self.name)
+        return ret
+        
+def call_cmp(cmp_name, cmp_func):
+    return ChainedMethodsPipe(cmp_name, cmp_func).run()
+
 
 class RDFLogger:
     @staticmethod

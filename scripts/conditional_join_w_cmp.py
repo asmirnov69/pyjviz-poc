@@ -8,7 +8,7 @@ import pandas as pd
 
 import janitor.pyjviz as pyjviz
 from janitor.pyjrdflogger import RDFLogger
-import janitor.pyjcmp as pyjcmp
+from janitor.pyjrdflogger import call_cmp
 
 from janitor.functions import *
 
@@ -26,21 +26,21 @@ if __name__ == "__main__":
 
 
     if 1:
-        res1 = pyjcmp.call_cmp("p1",
-                          lambda: df1.conditional_join(df2,
-                                                       ('id', 'id', "<"),
-                                                       df_columns = {'id':'df_id'},
-                                                       right_columns = {'id':'right_id'}
-                                                       ))
+        res1 = call_cmp("p1",
+                        lambda: df1.conditional_join(df2,
+                                                     ('id', 'id', "<"),
+                                                     df_columns = {'id':'df_id'},
+                                                     right_columns = {'id':'right_id'}
+                                                     ))
         print(res1)
 
     if 1:
-        res2 = pyjcmp.call_cmp("p2",
-                           lambda: df1.select_columns('value_1').conditional_join(
-                               df2.select_columns('val*'),
-                               ('value_1', 'value_2A', '>'),
-                               ('value_1', 'value_2B', '<'),
-                           ))
+        res2 = call_cmp("p2",
+                        lambda: df1.select_columns('value_1').conditional_join(
+                            df2.select_columns('val*'),
+                            ('value_1', 'value_2A', '>'),
+                            ('value_1', 'value_2B', '<'),
+                        ))
         print(res2)
 
     pyjviz.render_rdflog(rdflog_fn)

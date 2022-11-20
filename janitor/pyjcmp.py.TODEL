@@ -1,4 +1,4 @@
-import threading
+ChainedMethodsPipe_curr_cmp_name = None
 
 class ChainedMethodsPipe:
     def __init__(self, name, cmp_func):
@@ -7,8 +7,8 @@ class ChainedMethodsPipe:
 
     def run(self):
         print("CMP start:", self.name)
-        thread_locals = threading.local()
-        thread_locals.ChainedMethodPipe_curr_cmp_name = self.name
+        global ChainedMethodsPipe_curr_cmp_name
+        ChainedMethodPipe_curr_cmp_name = self.name
         ret = self.cmp_func()
         print("cmp end:", self.name)
         return ret
