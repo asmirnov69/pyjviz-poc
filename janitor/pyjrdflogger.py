@@ -12,6 +12,10 @@ def open_pyjrdf_output__(out_fn):
         print("setup_pyjrdf_output:", out_dir)
         os.makedirs(out_dir)
     out_fd = open(out_fn, "wt")
+
+    # rdf prefixes used by PYJRDFLogger
+    print("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .", file = out_fd)
+    
     return out_fd
 
 def get_curr_cmp_name__():
@@ -21,11 +25,11 @@ def get_curr_cmp_name__():
         ret = thread_locals.ChainedMethodPipe_curr_cmp_name
     return ret
 
-class PYJRDF:
+class RDFLogger:
     @staticmethod
     def init(out_filename): 
         global register
-        register.pandas_call_reporting_obj = PYJRDF(out_filename)       
+        register.pandas_call_reporting_obj = RDFLogger(out_filename)
     
     def __init__(self, out_filename):        
         self.out_fd = open_pyjrdf_output__(out_filename)
@@ -33,7 +37,6 @@ class PYJRDF:
         self.registered_dataframes_cmps = set() # (dfid, cmp)
         self.random_id = 0 # should be better way
         self.registered_cmps = {}
-        print("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .", file = self.out_fd)
 
     def flush(self):
         self.out_fd.flush()

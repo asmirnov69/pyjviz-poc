@@ -1,7 +1,6 @@
 # the code in this file is based on https://github.com/Zsailer/pandas_flavor/blob/master/pandas_flavor/register.py
 #
 from functools import wraps
-import pandas as pd
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
 
 import warnings
@@ -53,8 +52,10 @@ def register_dataframe_method(method):
             # to pass that to pyjrdf method calls which responsible for rdf triple dumping to rdf log file
             @wraps(method)
             def __call__(self, *args, **kwargs):                
-                with global_scf.get_sc() as sc:
-                    return globals()['pandas_call_reporting_obj'].dataframe_redirected_call(sc.scf.level, self._obj, method, *args, **kwargs)
+                global pandas_call_reporting_obj
+                if pandas_call_reporting_obj:
+                    with global_scf.get_sc() as sc:
+                        return pandas_call_reporting_obj.dataframe_redirected_call(sc.scf.level, self._obj, method, *args, **kwargs)
 
         # this is location where pandas.api.extensions used to register method caller class
         register_dataframe_accessor(method.__name__)(AccessorMethod)

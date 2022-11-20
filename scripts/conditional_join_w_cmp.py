@@ -7,7 +7,7 @@ import sys; sys.path.append("..")
 import pandas as pd
 
 import janitor.pyjviz as pyjviz
-import janitor.pyjrdf as pyjrdf
+from janitor.pyjrdflogger import RDFLogger
 import janitor.pyjcmp as pyjcmp
 
 from janitor.functions import *
@@ -15,7 +15,7 @@ from janitor.functions import *
 if __name__ == "__main__":
     # configure pyjrdf
     rdflog_fn = pyjviz.get_rdflog_filename(sys.argv[0])
-    pyjrdf.PYJRDF.init(rdflog_fn)
+    RDFLogger.init(rdflog_fn)
     
     df1 = pd.DataFrame({'id': [1,1,1,2,2,3],
                         'value_1': [2,5,7,1,3,4]})

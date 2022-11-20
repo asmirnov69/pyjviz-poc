@@ -6,7 +6,7 @@ import typing
 import pandas as pd
 
 import janitor.register as register
-import janitor.pyjrdf as pyjrdf
+from janitor.pyjrdflogger import RDFLogger
 import janitor.pyjviz as pyjviz
 
 TestDF = typing.NewType('TestDF', pd.DataFrame)
@@ -20,7 +20,7 @@ def a0(df: pd.DataFrame) -> TestDF:
 if __name__ == "__main__":
     # configure pyjrdf
     rdflog_fn = pyjviz.get_rdflog_filename(sys.argv[0])
-    pyjrdf.PYJRDF.init(rdflog_fn)
+    RDFLogger.init(rdflog_fn)
 
     print(TestDF, TestDF.__name__, TestDF.__supertype__)
     print(TestDF.columns)
