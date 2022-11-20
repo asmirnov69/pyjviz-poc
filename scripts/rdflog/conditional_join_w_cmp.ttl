@@ -1,45 +1,49 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-<pyj:140597026431712> rdf:type <pyj:DataFrame> .
-<pyj:140597026431712> <pyj:df-shape> "(6, 2)" .
-<pyj:140597026431712> <pyj:df-columns> "id,value_1" .
+<pyj:140682066772704> rdf:type <pyj:DataFrame> .
+<pyj:140682066772704> <pyj:df-shape> "(6, 2)" .
+<pyj:140682066772704> <pyj:df-columns> "id,value_1" .
 <pyj:cmp:0> rdf:type <pyj:CMP> .
-<pyj:cmp:0> rdf:label "None" .
-<pyj:140597026431712> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140596975062272> rdf:type <pyj:DataFrame> .
-<pyj:140596975062272> <pyj:df-shape> "(14, 2)" .
-<pyj:140596975062272> <pyj:df-columns> "df_id,right_id" .
-<pyj:140596975062272> <pyj:cmp> <pyj:cmp:0> .
+<pyj:cmp:0> rdf:label "none" .
+<pyj:140682066772704> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140682015407360> rdf:type <pyj:DataFrame> .
+<pyj:140682015407360> <pyj:df-shape> "(14, 2)" .
+<pyj:140682015407360> <pyj:df-columns> "df_id,right_id" .
+<pyj:140682015407360> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:1> rdf:type <pyj:Method> .
 <pyj:method:1> rdf:label "conditional_join" .
-<pyj:140597026431712> <pyj:method-call> <pyj:method:1> .
-<pyj:method:1> <pyj:method-return> <pyj:140596975062272> .
-<pyj:140596975342352> rdf:type <pyj:DataFrame> .
-<pyj:140596975342352> <pyj:df-shape> "(8, 3)" .
-<pyj:140596975342352> <pyj:df-columns> "id,value_2A,value_2B" .
-<pyj:140596975342352> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140596975342352> <pyj:method-call-arg> <pyj:method:1> .
-<pyj:140596974723712> rdf:type <pyj:DataFrame> .
-<pyj:140596974723712> <pyj:df-shape> "(6, 1)" .
-<pyj:140596974723712> <pyj:df-columns> "value_1" .
-<pyj:140596974723712> <pyj:cmp> <pyj:cmp:0> .
+<pyj:method:1> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140682066772704> <pyj:method-call> <pyj:method:1> .
+<pyj:method:1> <pyj:method-return> <pyj:140682015407360> .
+<pyj:140682015182656> rdf:type <pyj:DataFrame> .
+<pyj:140682015182656> <pyj:df-shape> "(8, 3)" .
+<pyj:140682015182656> <pyj:df-columns> "id,value_2A,value_2B" .
+<pyj:140682015182656> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140682015182656> <pyj:method-call-arg> <pyj:method:1> .
+<pyj:140682015072896> rdf:type <pyj:DataFrame> .
+<pyj:140682015072896> <pyj:df-shape> "(6, 1)" .
+<pyj:140682015072896> <pyj:df-columns> "value_1" .
+<pyj:140682015072896> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:2> rdf:type <pyj:Method> .
 <pyj:method:2> rdf:label "select_columns" .
-<pyj:140597026431712> <pyj:method-call> <pyj:method:2> .
-<pyj:method:2> <pyj:method-return> <pyj:140596974723712> .
-<pyj:140596975062656> rdf:type <pyj:DataFrame> .
-<pyj:140596975062656> <pyj:df-shape> "(8, 2)" .
-<pyj:140596975062656> <pyj:df-columns> "value_2A,value_2B" .
-<pyj:140596975062656> <pyj:cmp> <pyj:cmp:0> .
+<pyj:method:2> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140682066772704> <pyj:method-call> <pyj:method:2> .
+<pyj:method:2> <pyj:method-return> <pyj:140682015072896> .
+<pyj:140682015406832> rdf:type <pyj:DataFrame> .
+<pyj:140682015406832> <pyj:df-shape> "(8, 2)" .
+<pyj:140682015406832> <pyj:df-columns> "value_2A,value_2B" .
+<pyj:140682015406832> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:3> rdf:type <pyj:Method> .
 <pyj:method:3> rdf:label "select_columns" .
-<pyj:140596975342352> <pyj:method-call> <pyj:method:3> .
-<pyj:method:3> <pyj:method-return> <pyj:140596975062656> .
-<pyj:140596975060880> rdf:type <pyj:DataFrame> .
-<pyj:140596975060880> <pyj:df-shape> "(5, 3)" .
-<pyj:140596975060880> <pyj:df-columns> "value_1,value_2A,value_2B" .
-<pyj:140596975060880> <pyj:cmp> <pyj:cmp:0> .
+<pyj:method:3> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140682015182656> <pyj:method-call> <pyj:method:3> .
+<pyj:method:3> <pyj:method-return> <pyj:140682015406832> .
+<pyj:140682015405392> rdf:type <pyj:DataFrame> .
+<pyj:140682015405392> <pyj:df-shape> "(5, 3)" .
+<pyj:140682015405392> <pyj:df-columns> "value_1,value_2A,value_2B" .
+<pyj:140682015405392> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:4> rdf:type <pyj:Method> .
 <pyj:method:4> rdf:label "conditional_join" .
-<pyj:140596974723712> <pyj:method-call> <pyj:method:4> .
-<pyj:method:4> <pyj:method-return> <pyj:140596975060880> .
-<pyj:140596975062656> <pyj:method-call-arg> <pyj:method:4> .
+<pyj:method:4> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140682015072896> <pyj:method-call> <pyj:method:4> .
+<pyj:method:4> <pyj:method-return> <pyj:140682015405392> .
+<pyj:140682015406832> <pyj:method-call-arg> <pyj:method:4> .
