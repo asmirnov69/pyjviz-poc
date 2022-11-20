@@ -26,20 +26,12 @@ class Wrapper:
         method_o = methods_d.get(attr)
         return CallWrapper(d_o, method_o)
 
-def call_cmp(name, pb):
+def call_cmp(mod_code, name, pb):
     print("calling pipe", name)
-    # pb.__code__ -- see also https://www.codeguage.com/courses/python/functions-code-objects
-    # any chance to modify code to insert Wrapper as chain start? I.e. df should be replaced
-    # with Wrapper(df)
-    #
-    # ipdb> pb.__code__.co_names
-    # ('df', 'my_transform')
-    # ipdb> pb.__code__.co_code
-    # b't\x00\xa0\x01\xa1\x00S\x00'
-    ipdb.set_trace()
-
     print(dis.dis(pb)) # show VM disassembly
-    if 0:
+
+    ipdb.set_trace()
+    if mod_code == False:
         # unmodified call
         ret = pb()
     else:
@@ -47,7 +39,13 @@ def call_cmp(name, pb):
         instructions = bytecode.ConcreteBytecode.from_code(pb.__code__)
         print([x for x in instructions])
         # we can modify instructions here, see https://bytecode.readthedocs.io/en/latest/usage.html#concrete-bytecode
+        instructions.names.append('Wrapper') # appending Wrapper to names to avoid arg shift in exisiting bytecode
+        instructions.insert(0, bytecode.ConcreteInstr('LOAD_GLOBAL', len(instructions.names) - 1))
+        instructions.insert(2, bytecode.ConcreteInstr('CALL_FUNCTION', 1))
+        
         pb.__code__ = bytecode.ConcreteBytecode.to_code(instructions)
+        print("modified code:")
+        print(dis.dis(pb)) # show VM disassembly
         ret = pb()
 
     print("all done")
@@ -60,16 +58,17 @@ def my_transform(df: pd.DataFrame) -> pd.DataFrame:
 methods_d['my_transform'] = my_transform
 
 
-
-df = pd.DataFrame({'a': range(10)})
-if 1:
-    # note that we need to use Wrapper to start the chain
-    ret = call_cmp("test-pipe", lambda: Wrapper(df).my_transform())
-else:
-    # experiment: could we insert Wrapper(df) instead of df into lambda function
-    # using func described here https://www.codeguage.com/courses/python/functions-code-objects
-    ret = call_cmp("test-pipe", lambda: df.my_transform())
-print(ret)
-
-
+if __name__ == "__main__":
+    df = pd.DataFrame({'a': range(10)})
+    if 1:
+        # note that we need to use Wrapper to start the chain
+        ret = call_cmp(False, "test-pipe", lambda: Wrapper(df).my_transform())
+        print(ret)
+        
+    print("-------------")
+    if 1:
+        # experiment: could we insert Wrapper(df) instead of df into lambda function
+        # using func described here https://www.codeguage.com/courses/python/functions-code-objects
+        ret = call_cmp(True, "test-pipe", lambda: df.my_transform())
+        print(ret)
 
