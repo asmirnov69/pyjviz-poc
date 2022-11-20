@@ -6,7 +6,6 @@ import sys; sys.path.append("..")
 import pandas as pd
 
 import janitor.pyjviz as pyjviz
-import janitor.register as register
 import janitor.pyjrdf as pyjrdf
 import janitor.pyjcmp as pyjcmp
 
@@ -15,7 +14,7 @@ from janitor.functions import *
 if __name__ == "__main__":
     # configure pyjrdf
     rdflog_fn = pyjviz.get_rdflog_filename(sys.argv[0])
-    register.pandas_call_reporting_obj = pyjrdf.PYJRDF(rdflog_fn)
+    pyjrdf.PYJRDF.init(rdflog_fn)
     
     if 0:
         url = "https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.xlsx?raw=true"

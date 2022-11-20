@@ -88,11 +88,7 @@ call_cmp("left", lambda: left_df.ccc().join(call_cmp("right", right_df.ccc()))
 ```
 """
 
-
-curr_cmp_name = "none"
-
-def get_curr_cmp_name():
-    return curr_cmp_name
+import threading
 
 class ChainedMethodsPipe:
     def __init__(self, name, cmp_func):
@@ -101,7 +97,8 @@ class ChainedMethodsPipe:
 
     def run(self):
         print("CMP start:", self.name)
-        globals()['curr_cmp_name'] = self.name
+        thread_locals = threading.local()
+        thread_locals.ChainedMethodPipe_curr_cmp_name = self.name
         ret = self.cmp_func()
         print("cmp end:", self.name)
         return ret

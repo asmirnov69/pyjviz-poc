@@ -1,9 +1,10 @@
 # pyjrdf to keep all rdf logging functionality
 #
-import sys
+import sys, threading
 import os.path
 import pandas as pd
-from .pyjcmp import get_curr_cmp_name
+
+import janitor.register as register
 
 def open_pyjrdf_output__(out_fn):
     out_dir = os.path.dirname(out_fn)    
@@ -13,7 +14,19 @@ def open_pyjrdf_output__(out_fn):
     out_fd = open(out_fn, "wt")
     return out_fd
 
-class PYJRDF:    
+def get_curr_cmp_name__():
+    thread_locals = threading.local()
+    ret = None
+    if hasattr(thread_locals, 'ChainedMethodPipe_curr_cmp_name'):
+        ret = thread_locals.ChainedMethodPipe_curr_cmp_name
+    return ret
+
+class PYJRDF:
+    @staticmethod
+    def init(out_filename): 
+        global register
+        register.pandas_call_reporting_obj = PYJRDF(out_filename)       
+    
     def __init__(self, out_filename):        
         self.out_fd = open_pyjrdf_output__(out_filename)
         self.registered_dataframes = set()
@@ -44,7 +57,7 @@ class PYJRDF:
             #ipdb.set_trace()
             self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:df-columns>", '"' + f"{','.join(df_ref.columns)}" + '"')
 
-        curr_cmp_name = get_curr_cmp_name()
+        curr_cmp_name = get_curr_cmp_name__()
         df_id_cmp = (id(df_ref), curr_cmp_name)
         if not df_id_cmp in self.registered_dataframes_cmps:
             self.registered_dataframes_cmps.add(df_id_cmp)
@@ -55,7 +68,7 @@ class PYJRDF:
         method_call_subj = f"<pyj:method:{self.random_id}>"; self.random_id += 1
         self.dump_triple(method_call_subj, "rdf:type", "<pyj:Method>")
         self.dump_triple(method_call_subj, "rdf:label", f'"{method_name}"')
-        if get_curr_cmp_name():
+        if get_curr_cmp_name__():
             self.dump_triple(method_call_subj, "<pyj:cmp>", self.get_cmp_uri(get_curr_cmp_name()))
         
         self.dump_triple(f"<pyj:{df_this}>", "<pyj:method-call>", method_call_subj)
