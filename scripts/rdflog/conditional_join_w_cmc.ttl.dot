@@ -15,7 +15,7 @@ node0_0 [
                 color="#88000022"
                 shape = rect
                 label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322343441840</b><br/>shape: (6, 2)</td> </tr>
+                         <tr> <td> <b>pyj:139672245876144</b><br/>shape: (6, 2)</td> </tr>
                          <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
                 <tr><td align="left"><FONT POINT-SIZE="8px">id</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">value_1</FONT></td></tr>
@@ -25,7 +25,7 @@ node0_1 [
                 color="#88000022"
                 shape = rect
                 label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322028088384</b><br/>shape: (14, 2)</td> </tr>
+                         <tr> <td> <b>pyj:139671930526784</b><br/>shape: (14, 2)</td> </tr>
                          <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
                 <tr><td align="left"><FONT POINT-SIZE="8px">df_id</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">right_id</FONT></td></tr>
@@ -35,82 +35,55 @@ node0_2 [
                 color="#88000022"
                 shape = rect
                 label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322028355840</b><br/>shape: (8, 3)</td> </tr>
+                         <tr> <td> <b>pyj:139671930794240</b><br/>shape: (8, 3)</td> </tr>
                          <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
                 <tr><td align="left"><FONT POINT-SIZE="8px">id</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">value_2A</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">value_2B</FONT></td></tr>
                          </table>>
                 ];
-node0_3 [ label = "conditional_join" ];
-subgraph cluster_0 {
-label = "p1";
-node0_0 -> node0_3;
-node0_2 -> node0_3;
-node0_3 -> node0_1;
-}
-node1_0 [ 
+node0_3 [ 
                 color="#88000022"
                 shape = rect
                 label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322343441840</b><br/>shape: (6, 2)</td> </tr>
-                         <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
-                <tr><td align="left"><FONT POINT-SIZE="8px">id</FONT></td></tr>
-<tr><td align="left"><FONT POINT-SIZE="8px">value_1</FONT></td></tr>
-                         </table>>
-                ];
-node1_1 [ 
-                color="#88000022"
-                shape = rect
-                label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322028355840</b><br/>shape: (8, 3)</td> </tr>
-                         <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
-                <tr><td align="left"><FONT POINT-SIZE="8px">id</FONT></td></tr>
-<tr><td align="left"><FONT POINT-SIZE="8px">value_2A</FONT></td></tr>
-<tr><td align="left"><FONT POINT-SIZE="8px">value_2B</FONT></td></tr>
-                         </table>>
-                ];
-node1_2 [ 
-                color="#88000022"
-                shape = rect
-                label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322028088288</b><br/>shape: (6, 1)</td> </tr>
+                         <tr> <td> <b>pyj:139671930526688</b><br/>shape: (6, 1)</td> </tr>
                          <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
                 <tr><td align="left"><FONT POINT-SIZE="8px">value_1</FONT></td></tr>
                          </table>>
                 ];
-node1_3 [ 
+node0_4 [ 
                 color="#88000022"
                 shape = rect
                 label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322028088912</b><br/>shape: (8, 2)</td> </tr>
+                         <tr> <td> <b>pyj:139671930527312</b><br/>shape: (8, 2)</td> </tr>
                          <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
                 <tr><td align="left"><FONT POINT-SIZE="8px">value_2A</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">value_2B</FONT></td></tr>
                          </table>>
                 ];
-node1_4 [ 
+node0_5 [ 
                 color="#88000022"
                 shape = rect
                 label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
-                         <tr> <td> <b>pyj:140322027739072</b><br/>shape: (5, 3)</td> </tr>
+                         <tr> <td> <b>pyj:139671930173376</b><br/>shape: (5, 3)</td> </tr>
                          <tr> <td align="left"><i>columns:</i><br align="left"/></td></tr>
                 <tr><td align="left"><FONT POINT-SIZE="8px">value_1</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">value_2A</FONT></td></tr>
 <tr><td align="left"><FONT POINT-SIZE="8px">value_2B</FONT></td></tr>
                          </table>>
                 ];
-node1_5 [ label = "select_columns" ];
-node1_6 [ label = "select_columns" ];
-node1_7 [ label = "conditional_join" ];
-subgraph cluster_1 {
-label = "p2";
-node1_0 -> node1_5;
-node1_2 -> node1_7;
-node1_1 -> node1_6;
-node1_3 -> node1_7;
-node1_5 -> node1_2;
-node1_6 -> node1_3;
-node1_7 -> node1_4;
-}
+node0_6 [ label = "conditional_join" ];
+node0_7 [ label = "select_columns" ];
+node0_8 [ label = "select_columns" ];
+node0_9 [ label = "conditional_join" ];
+node0_0 -> node0_6;
+node0_0 -> node0_7;
+node0_2 -> node0_6;
+node0_2 -> node0_8;
+node0_3 -> node0_9;
+node0_4 -> node0_9;
+node0_6 -> node0_1;
+node0_7 -> node0_3;
+node0_8 -> node0_4;
+node0_9 -> node0_5;
 }
