@@ -39,7 +39,7 @@ class ChainedMethodsCall:
         print("cmc end:", self.name)
         return ret
         
-def call_cmc(cmc_name, cmc_func):
+def run_cmc(cmc_name, cmc_func):
     return ChainedMethodsCall(cmc_name, cmc_func).run()
 
 

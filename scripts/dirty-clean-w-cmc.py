@@ -7,7 +7,7 @@ import pandas as pd
 
 import janitor.pyjviz as pyjviz
 from janitor.pyjrdflogger import RDFLogger
-from janitor.pyjrdflogger import call_cmc
+from janitor.pyjrdflogger import run_cmc
 
 from janitor.functions import *
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         
     #print(dirty)    
 
-    clean = call_cmc("from_dirty_to_clean", lambda:
+    clean = run_cmc("from_dirty_to_clean", lambda:
                      dirty.clean_names()
                      .dropna(axis='columns', how='all')
                      .dropna(axis='rows', how='all')
