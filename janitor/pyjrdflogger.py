@@ -52,9 +52,9 @@ class RDFLogger:
     def __init__(self, out_filename):        
         self.out_fd = open_pyjrdf_output__(out_filename)
         self.known_dataframes = set()
-        self.known_dataframes_cmps = set() # (dfid, cmp)
+        self.known_dataframes_cmcs = set() # (dfid, cmc)
         self.random_id = 0 # should be better way
-        self.known_cmps = {}
+        self.known_cmcs = {}
 
     def flush__(self):
         self.out_fd.flush()
@@ -62,13 +62,13 @@ class RDFLogger:
     def dump_triple__(self, subj, pred, obj):
         print(subj, pred, obj, ".", file = self.out_fd)
 
-    def get_cmp_uri__(self, cmp_name):
-        if not cmp_name in self.known_cmps:
-            cmp_uri = f"<pyj:cmp:{self.random_id}>"; self.random_id += 1
-            self.known_cmps[cmp_name] = cmp_uri            
-            self.dump_triple__(cmp_uri, "rdf:type", "<pyj:CMP>")
-            self.dump_triple__(cmp_uri, "rdf:label", f'"{cmp_name}"')
-        return self.known_cmps.get(cmp_name)
+    def get_cmc_uri__(self, cmc_name):
+        if not cmc_name in self.known_cmcs:
+            cmc_uri = f"<pyj:cmc:{self.random_id}>"; self.random_id += 1
+            self.known_cmcs[cmc_name] = cmc_uri            
+            self.dump_triple__(cmc_uri, "rdf:type", "<pyj:CMC>")
+            self.dump_triple__(cmc_uri, "rdf:label", f'"{cmc_name}"')
+        return self.known_cmcs.get(cmc_name)
         
     def remember_dataframe__(self, df_ref):
         if not id(df_ref) in self.known_dataframes:
@@ -78,18 +78,18 @@ class RDFLogger:
             #ipdb.set_trace()
             self.dump_triple__(f"<pyj:{id(df_ref)}>", "<pyj:df-columns>", '"' + f"{','.join(df_ref.columns)}" + '"')
 
-        curr_cmp_name = get_curr_cmc_name__()
-        df_id_cmp = (id(df_ref), curr_cmp_name)
-        if not df_id_cmp in self.known_dataframes_cmps:
-            self.known_dataframes_cmps.add(df_id_cmp)
-            cmp_uri = self.get_cmp_uri__(curr_cmp_name)
-            self.dump_triple__(f"<pyj:{id(df_ref)}>", "<pyj:cmp>", cmp_uri)
+        curr_cmc_name = get_curr_cmc_name__()
+        df_id_cmc = (id(df_ref), curr_cmc_name)
+        if not df_id_cmc in self.known_dataframes_cmcs:
+            self.known_dataframes_cmcs.add(df_id_cmc)
+            cmc_uri = self.get_cmc_uri__(curr_cmc_name)
+            self.dump_triple__(f"<pyj:{id(df_ref)}>", "<pyj:cmc>", cmc_uri)
                 
     def dump_pyj_method_call__(self, df_this, method_name, method_args, df_ret):
         method_call_subj = f"<pyj:method:{self.random_id}>"; self.random_id += 1
         self.dump_triple__(method_call_subj, "rdf:type", "<pyj:Method>")
         self.dump_triple__(method_call_subj, "rdf:label", f'"{method_name}"')
-        self.dump_triple__(method_call_subj, "<pyj:cmp>", self.get_cmp_uri__(get_curr_cmc_name__()))
+        self.dump_triple__(method_call_subj, "<pyj:cmc>", self.get_cmc_uri__(get_curr_cmc_name__()))
         
         self.dump_triple__(f"<pyj:{df_this}>", "<pyj:method-call>", method_call_subj)
         self.dump_triple__(method_call_subj, "<pyj:method-return>", f"<pyj:{df_ret}>")
