@@ -1,9 +1,10 @@
+# RDF  as tool for software engineering
 It used to be XML. XML heavy promotion produced some results but overall didn't meet the expectations.
 RDF is exactly opposite story: [[tbc]]
 
 # RDF intro
 
-[[RDF as tool for software engineering]] is [Resource Definition Format](https://www.w3.org/RDF/) introduced to standardize particular knowledge graph representation which uses *triples*. To get better idea look at this examples from [RDF 1.1 Primer](https://www.w3.org/TR/rdf11-primer/) First example from section 3.1 looks like most important so I will use that below.
+[RDF](RDF.md) is [Resource Definition Format](https://www.w3.org/RDF/) introduced to standardize particular knowledge graph representation which uses *triples*. To get better idea look at this examples from [RDF 1.1 Primer](https://www.w3.org/TR/rdf11-primer/) First example from section 3.1 looks like most important so I will use that below.
 
 RDF dataset is actually set of *triples* where each triple has parts called *subject*, *predicate* and *object*:
 ```

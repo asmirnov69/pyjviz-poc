@@ -16,9 +16,9 @@ pyjviz.py --> graphviz
 [pyjviz-poc/janitor/functions/pandas_builtin_overrides.py](https://github.com/asmirnov69/pyjviz-poc/blob/main/janitor/functions/pandas_builtin_overrides.py) creates *pyjanitor* version of selected dataframe methods. Overrides themselves do nothing - just passing result of original *pandas* call to the caller. However *pyjanitor* registration will allow call information to be passed to configured *pandas_call_reporting_obj* so pandas methods will be treated the same way as any registered *pyjanitor* method.
 
 # pyjrdflogger.py
-[pyjviz-poc/janitor/pyjrdflogger.py](https://github.com/asmirnov69/pyjviz-poc/blob/main/janitor/pyjrdflogger.py) is module with main responsibility to provide convenience methods to create and append [[RDF as tool for software engineering]] triples to rdf logfile. 
+[pyjviz-poc/janitor/pyjrdflogger.py](https://github.com/asmirnov69/pyjviz-poc/blob/main/janitor/pyjrdflogger.py) is module with main responsibility to provide convenience methods to create and append [RDF](RDF.md) triples to rdf logfile. 
 
-NOTE that creating of rdf log does not require any external modules. Triples corresponding to objects and events are created as formatted strings and then saved using standard IO facilities. Check [[RDF as tool for software engineering]] on more details.
+NOTE that creating of rdf log does not require any external modules. Triples corresponding to objects and events are created as formatted strings and then saved using standard IO facilities. Check [RDF](RDF.md) on more details.
 
 ## class *RDFLogger*
 Static method *RDFLogger.init* suppose to be called before program execution starts to open rdf log file and setup global *pandas_call_reporting_obj* from *register.py* to point to instance of *RDFLogger*. 

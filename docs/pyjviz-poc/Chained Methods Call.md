@@ -17,7 +17,7 @@ df
 )
 ```
 
-This is an example of CMC idea in use: each new method call of object df returns something which can be use for next method call ChainedMethodsCall [[tbc]] is to provide some additional functionality: it will same some additional rdf triples into program log: [[tbc]] **check can the code below survive copy/paste**
+This is an example of CMC idea in use: each new method call of object df returns something which can be use for next method call ChainedMethodsCall [tbc](tbc.md) is to provide some additional functionality: it will same some additional rdf triples into program log: [tbc](tbc.md) **check can the code below survive copy/paste**
 
 ```python
 df_clean_cmp = ChainedMethodsCall("from_dirty_to_clean", 
