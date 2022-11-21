@@ -34,7 +34,7 @@ class ChainedMethodsCall:
     def run(self):
         print("CMC start:", self.name)
         global ChainedMethodsCall_curr_cmc_name
-        ChainedMethodsPipe_curr_cmc_name = self.name
+        ChainedMethodsCall_curr_cmc_name = self.name
         ret = self.cmc_func()
         print("cmc end:", self.name)
         return ret
