@@ -18,29 +18,29 @@ def open_pyjrdf_output__(out_fn):
     
     return out_fd
 
-ChainedMethodsPipe_curr_cmp_name = None
-def get_curr_cmp_name__():
+ChainedMethodsCall_curr_cmc_name = None
+def get_curr_cmc_name__():
     ret = "none"
-    global ChainedMethodsPipe_curr_cmp_name    
-    if ChainedMethodsPipe_curr_cmp_name:
-        ret = ChainedMethodsPipe_curr_cmp_name
+    global ChainedMethodsCall_curr_cmc_name    
+    if ChainedMethodsCall_curr_cmc_name:
+        ret = ChainedMethodsCall_curr_cmc_name
     return ret
 
-class ChainedMethodsPipe:
-    def __init__(self, name, cmp_func):
+class ChainedMethodsCall:
+    def __init__(self, name, cmc_func):
         self.name = name
-        self.cmp_func = cmp_func
+        self.cmc_func = cmc_func
 
     def run(self):
-        print("CMP start:", self.name)
-        global ChainedMethodsPipe_curr_cmp_name
-        ChainedMethodsPipe_curr_cmp_name = self.name
-        ret = self.cmp_func()
-        print("cmp end:", self.name)
+        print("CMC start:", self.name)
+        global ChainedMethodsCall_curr_cmc_name
+        ChainedMethodsPipe_curr_cmc_name = self.name
+        ret = self.cmc_func()
+        print("cmc end:", self.name)
         return ret
         
-def call_cmp(cmp_name, cmp_func):
-    return ChainedMethodsPipe(cmp_name, cmp_func).run()
+def call_cmc(cmc_name, cmc_func):
+    return ChainedMethodsCall(cmc_name, cmc_func).run()
 
 
 class RDFLogger:
@@ -56,60 +56,51 @@ class RDFLogger:
         self.random_id = 0 # should be better way
         self.known_cmps = {}
 
-    def flush(self):
+    def flush__(self):
         self.out_fd.flush()
         
-    def dump_triple(self, subj, pred, obj):
+    def dump_triple__(self, subj, pred, obj):
         print(subj, pred, obj, ".", file = self.out_fd)
 
-    def get_cmp_uri(self, cmp_name):
+    def get_cmp_uri__(self, cmp_name):
         if not cmp_name in self.known_cmps:
             cmp_uri = f"<pyj:cmp:{self.random_id}>"; self.random_id += 1
             self.known_cmps[cmp_name] = cmp_uri            
-            self.dump_triple(cmp_uri, "rdf:type", "<pyj:CMP>")
-            self.dump_triple(cmp_uri, "rdf:label", f'"{cmp_name}"')
+            self.dump_triple__(cmp_uri, "rdf:type", "<pyj:CMP>")
+            self.dump_triple__(cmp_uri, "rdf:label", f'"{cmp_name}"')
         return self.known_cmps.get(cmp_name)
         
-    def remember_dataframe(self, df_ref):
+    def remember_dataframe__(self, df_ref):
         if not id(df_ref) in self.known_dataframes:
             self.known_dataframes.add(id(df_ref))
-            self.dump_triple(f"<pyj:{id(df_ref)}>", "rdf:type", "<pyj:DataFrame>")
-            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:df-shape>", f'"{df_ref.shape}"')
+            self.dump_triple__(f"<pyj:{id(df_ref)}>", "rdf:type", "<pyj:DataFrame>")
+            self.dump_triple__(f"<pyj:{id(df_ref)}>", "<pyj:df-shape>", f'"{df_ref.shape}"')
             #ipdb.set_trace()
-            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:df-columns>", '"' + f"{','.join(df_ref.columns)}" + '"')
+            self.dump_triple__(f"<pyj:{id(df_ref)}>", "<pyj:df-columns>", '"' + f"{','.join(df_ref.columns)}" + '"')
 
-        curr_cmp_name = get_curr_cmp_name__()
+        curr_cmp_name = get_curr_cmc_name__()
         df_id_cmp = (id(df_ref), curr_cmp_name)
         if not df_id_cmp in self.known_dataframes_cmps:
             self.known_dataframes_cmps.add(df_id_cmp)
-            cmp_uri = self.get_cmp_uri(curr_cmp_name)
-            self.dump_triple(f"<pyj:{id(df_ref)}>", "<pyj:cmp>", cmp_uri)
+            cmp_uri = self.get_cmp_uri__(curr_cmp_name)
+            self.dump_triple__(f"<pyj:{id(df_ref)}>", "<pyj:cmp>", cmp_uri)
                 
-    def dump_pyj_method_call(self, df_this, method_name, method_args, df_ret):
+    def dump_pyj_method_call__(self, df_this, method_name, method_args, df_ret):
         method_call_subj = f"<pyj:method:{self.random_id}>"; self.random_id += 1
-        self.dump_triple(method_call_subj, "rdf:type", "<pyj:Method>")
-        self.dump_triple(method_call_subj, "rdf:label", f'"{method_name}"')
-        self.dump_triple(method_call_subj, "<pyj:cmp>", self.get_cmp_uri(get_curr_cmp_name__()))
+        self.dump_triple__(method_call_subj, "rdf:type", "<pyj:Method>")
+        self.dump_triple__(method_call_subj, "rdf:label", f'"{method_name}"')
+        self.dump_triple__(method_call_subj, "<pyj:cmp>", self.get_cmp_uri__(get_curr_cmc_name__()))
         
-        self.dump_triple(f"<pyj:{df_this}>", "<pyj:method-call>", method_call_subj)
-        self.dump_triple(method_call_subj, "<pyj:method-return>", f"<pyj:{df_ret}>")
+        self.dump_triple__(f"<pyj:{df_this}>", "<pyj:method-call>", method_call_subj)
+        self.dump_triple__(method_call_subj, "<pyj:method-return>", f"<pyj:{df_ret}>")
 
         for arg in method_args:
             if isinstance(arg, pd.DataFrame):
-                self.remember_dataframe(arg)
-                self.dump_triple(f"<pyj:{id(arg)}>", "<pyj:method-call-arg>", method_call_subj)
+                self.remember_dataframe__(arg)
+                self.dump_triple__(f"<pyj:{id(arg)}>", "<pyj:method-call-arg>", method_call_subj)
     
-    def dataframe_redirected_call(self, call_level, pandas_obj, method, *args, **kwargs):
-        if call_level > 1:
-            ret = method(pandas_obj, *args, **kwargs)
-        else:
-            self.remember_dataframe(pandas_obj)
-            ret = method(pandas_obj, *args, **kwargs)
-            if id(ret) == id(pandas_obj):
-                ret = pd.DataFrame(pandas_obj)
-            self.remember_dataframe(ret)
-            self.dump_pyj_method_call(id(pandas_obj), method.__name__, args, id(ret))
-
-        self.flush()
-        
-        return ret
+    def handle_dataframe_method_call(self, method_return_obj, pandas_obj, method, *args, **kwargs):
+        self.remember_dataframe__(pandas_obj)
+        self.remember_dataframe__(method_return_obj)
+        self.dump_pyj_method_call__(id(pandas_obj), method.__name__, args, id(method_return_obj))
+        self.flush__()

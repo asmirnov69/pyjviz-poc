@@ -2,6 +2,7 @@
 #
 from functools import wraps
 from pandas.api.extensions import register_series_accessor, register_dataframe_accessor
+from pandas import DataFrame
 
 import warnings
 warnings.filterwarnings("ignore", category = UserWarning)
@@ -53,9 +54,15 @@ def register_dataframe_method(method):
             @wraps(method)
             def __call__(self, *args, **kwargs):                
                 global pandas_call_reporting_obj
-                if pandas_call_reporting_obj:
-                    with global_scf.get_sc() as sc:
-                        return pandas_call_reporting_obj.dataframe_redirected_call(sc.scf.level, self._obj, method, *args, **kwargs)
+                with global_scf.get_sc() as sc:
+                    pandas_obj = self._obj
+                    ret = method(pandas_obj, *args, **kwargs)
+                    if sc.scf.level == 1: # we want to intercept only top-level calls
+                        if id(ret) == id(pandas_obj):
+                            ret = DataFrame(pandas_obj) # ret dataframe will have different id
+                        if pandas_call_reporting_obj:
+                            pandas_call_reporting_obj.handle_dataframe_method_call(ret, pandas_obj, method, *args, **kwargs)
+                    return ret
 
         # this is location where pandas.api.extensions used to register method caller class
         register_dataframe_accessor(method.__name__)(AccessorMethod)

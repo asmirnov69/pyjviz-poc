@@ -1,70 +1,70 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-<pyj:140196298221504> rdf:type <pyj:DataFrame> .
-<pyj:140196298221504> <pyj:df-shape> "(13, 11)" .
-<pyj:140196298221504> <pyj:df-columns> "First Name,Last Name,Employee Status,Subject,Hire Date,% Allocated,Full time?,do not edit! --->,Certification,Certification.1,Certification.2" .
+<pyj:140615642716096> rdf:type <pyj:DataFrame> .
+<pyj:140615642716096> <pyj:df-shape> "(13, 11)" .
+<pyj:140615642716096> <pyj:df-columns> "First Name,Last Name,Employee Status,Subject,Hire Date,% Allocated,Full time?,do not edit! --->,Certification,Certification.1,Certification.2" .
 <pyj:cmp:0> rdf:type <pyj:CMP> .
 <pyj:cmp:0> rdf:label "from_dirty_to_clean" .
-<pyj:140196298221504> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298151632> rdf:type <pyj:DataFrame> .
-<pyj:140196298151632> <pyj:df-shape> "(13, 11)" .
-<pyj:140196298151632> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,%_allocated,full_time_,do_not_edit!_>,certification,certification_1,certification_2" .
-<pyj:140196298151632> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642716096> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642646512> rdf:type <pyj:DataFrame> .
+<pyj:140615642646512> <pyj:df-shape> "(13, 11)" .
+<pyj:140615642646512> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,%_allocated,full_time_,do_not_edit!_>,certification,certification_1,certification_2" .
+<pyj:140615642646512> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:1> rdf:type <pyj:Method> .
 <pyj:method:1> rdf:label "clean_names" .
 <pyj:method:1> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298221504> <pyj:method-call> <pyj:method:1> .
-<pyj:method:1> <pyj:method-return> <pyj:140196298151632> .
-<pyj:140196298152640> rdf:type <pyj:DataFrame> .
-<pyj:140196298152640> <pyj:df-shape> "(13, 9)" .
-<pyj:140196298152640> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,%_allocated,full_time_,certification,certification_1" .
-<pyj:140196298152640> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642716096> <pyj:method-call> <pyj:method:1> .
+<pyj:method:1> <pyj:method-return> <pyj:140615642646512> .
+<pyj:140615642646368> rdf:type <pyj:DataFrame> .
+<pyj:140615642646368> <pyj:df-shape> "(13, 9)" .
+<pyj:140615642646368> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,%_allocated,full_time_,certification,certification_1" .
+<pyj:140615642646368> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:2> rdf:type <pyj:Method> .
 <pyj:method:2> rdf:label "dropna" .
 <pyj:method:2> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298151632> <pyj:method-call> <pyj:method:2> .
-<pyj:method:2> <pyj:method-return> <pyj:140196298152640> .
-<pyj:140196298153792> rdf:type <pyj:DataFrame> .
-<pyj:140196298153792> <pyj:df-shape> "(12, 9)" .
-<pyj:140196298153792> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,%_allocated,full_time_,certification,certification_1" .
-<pyj:140196298153792> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642646512> <pyj:method-call> <pyj:method:2> .
+<pyj:method:2> <pyj:method-return> <pyj:140615642646368> .
+<pyj:140615642648336> rdf:type <pyj:DataFrame> .
+<pyj:140615642648336> <pyj:df-shape> "(12, 9)" .
+<pyj:140615642648336> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,%_allocated,full_time_,certification,certification_1" .
+<pyj:140615642648336> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:3> rdf:type <pyj:Method> .
 <pyj:method:3> rdf:label "dropna" .
 <pyj:method:3> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298152640> <pyj:method-call> <pyj:method:3> .
-<pyj:method:3> <pyj:method-return> <pyj:140196298153792> .
-<pyj:140196298153264> rdf:type <pyj:DataFrame> .
-<pyj:140196298153264> <pyj:df-shape> "(12, 9)" .
-<pyj:140196298153264> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification,certification_1" .
-<pyj:140196298153264> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642646368> <pyj:method-call> <pyj:method:3> .
+<pyj:method:3> <pyj:method-return> <pyj:140615642648336> .
+<pyj:140615642648000> rdf:type <pyj:DataFrame> .
+<pyj:140615642648000> <pyj:df-shape> "(12, 9)" .
+<pyj:140615642648000> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification,certification_1" .
+<pyj:140615642648000> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:4> rdf:type <pyj:Method> .
 <pyj:method:4> rdf:label "rename" .
 <pyj:method:4> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298153792> <pyj:method-call> <pyj:method:4> .
-<pyj:method:4> <pyj:method-return> <pyj:140196298153264> .
-<pyj:140196298153936> rdf:type <pyj:DataFrame> .
-<pyj:140196298153936> <pyj:df-shape> "(12, 9)" .
-<pyj:140196298153936> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification,certification_1" .
-<pyj:140196298153936> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642648336> <pyj:method-call> <pyj:method:4> .
+<pyj:method:4> <pyj:method-return> <pyj:140615642648000> .
+<pyj:140615642647760> rdf:type <pyj:DataFrame> .
+<pyj:140615642647760> <pyj:df-shape> "(12, 9)" .
+<pyj:140615642647760> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification,certification_1" .
+<pyj:140615642647760> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:5> rdf:type <pyj:Method> .
 <pyj:method:5> rdf:label "assign" .
 <pyj:method:5> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298153264> <pyj:method-call> <pyj:method:5> .
-<pyj:method:5> <pyj:method-return> <pyj:140196298153936> .
-<pyj:140196298151920> rdf:type <pyj:DataFrame> .
-<pyj:140196298151920> <pyj:df-shape> "(12, 8)" .
-<pyj:140196298151920> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification" .
-<pyj:140196298151920> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642648000> <pyj:method-call> <pyj:method:5> .
+<pyj:method:5> <pyj:method-return> <pyj:140615642647760> .
+<pyj:140615642647328> rdf:type <pyj:DataFrame> .
+<pyj:140615642647328> <pyj:df-shape> "(12, 8)" .
+<pyj:140615642647328> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification" .
+<pyj:140615642647328> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:6> rdf:type <pyj:Method> .
 <pyj:method:6> rdf:label "drop" .
 <pyj:method:6> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298153936> <pyj:method-call> <pyj:method:6> .
-<pyj:method:6> <pyj:method-return> <pyj:140196298151920> .
-<pyj:140196298150720> rdf:type <pyj:DataFrame> .
-<pyj:140196298150720> <pyj:df-shape> "(12, 8)" .
-<pyj:140196298150720> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification" .
-<pyj:140196298150720> <pyj:cmp> <pyj:cmp:0> .
+<pyj:140615642647760> <pyj:method-call> <pyj:method:6> .
+<pyj:method:6> <pyj:method-return> <pyj:140615642647328> .
+<pyj:140615642645168> rdf:type <pyj:DataFrame> .
+<pyj:140615642645168> <pyj:df-shape> "(12, 8)" .
+<pyj:140615642645168> <pyj:df-columns> "first_name,last_name,employee_status,subject,hire_date,percent_allocated,full_time,certification" .
+<pyj:140615642645168> <pyj:cmp> <pyj:cmp:0> .
 <pyj:method:7> rdf:type <pyj:Method> .
 <pyj:method:7> rdf:label "assign" .
 <pyj:method:7> <pyj:cmp> <pyj:cmp:0> .
-<pyj:140196298151920> <pyj:method-call> <pyj:method:7> .
-<pyj:method:7> <pyj:method-return> <pyj:140196298150720> .
+<pyj:140615642647328> <pyj:method-call> <pyj:method:7> .
+<pyj:method:7> <pyj:method-return> <pyj:140615642645168> .

@@ -8,7 +8,7 @@ import pandas as pd
 
 import janitor.pyjviz as pyjviz
 from janitor.pyjrdflogger import RDFLogger
-from janitor.pyjrdflogger import call_cmp
+from janitor.pyjrdflogger import call_cmc
 
 from janitor.functions import *
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
 
     if 1:
-        res1 = call_cmp("p1",
+        res1 = call_cmc("p1",
                         lambda: df1.conditional_join(df2,
                                                      ('id', 'id', "<"),
                                                      df_columns = {'id':'df_id'},
@@ -35,7 +35,7 @@ if __name__ == "__main__":
         print(res1)
 
     if 1:
-        res2 = call_cmp("p2",
+        res2 = call_cmc("p2",
                         lambda: df1.select_columns('value_1').conditional_join(
                             df2.select_columns('val*'),
                             ('value_1', 'value_2A', '>'),
