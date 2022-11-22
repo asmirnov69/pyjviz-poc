@@ -5,9 +5,9 @@ selected questions with some answers
 issue #1176 -> https://github.com/pyjanitor-devs/pyjanitor/issues/1176#issuecomment-1313514296
 
 ## What is the purpose of ChainedMethodsCall introduction?
-Main idea of [ChainedMethodsCall](ChainedMethodsCall.md) introduction is to provide the way to describe chained methods as a group of visual primitives. It seems to be appropriate in some situations where transformations become big enough.
+Main idea of [ChainedMethodsCall](new-classes/ChainedMethodsCall.md) introduction is to provide the way to describe chained methods as a group of visual primitives. It seems to be appropriate in some situations where transformations become big enough.
 
-There is also still unclear idea to use [ChainedMethodsCall](ChainedMethodsCall.md) for static analysis utility. Using [[ast]] or similar parser it seems to be possible to retrieve useful information about [pyjanitor](pyjanitor.md) transforms before run-time. Such information could be saved to [RDF](RDF.md) dataset to provide static visualization with additional things like context help using code annotations, docstrings or similar content.
+There is also still unclear idea to use [ChainedMethodsCall](new-classes/ChainedMethodsCall.md) for static analysis utility. Using [[ast]] or similar parser it seems to be possible to retrieve useful information about [pyjanitor](pyjanitor.md) transforms before run-time. Such information could be saved to [RDF](RDF.md) dataset to provide static visualization with additional things like context help using code annotations, docstrings or similar content.
 
 ## What are the most likely ways this code would break in the future, and what's the most likely place to go and fix?
 [pyjviz-poc](pyjviz-poc.md) code is written using global objects in few places in [pandas_flavor](pandas_flavor.md) and *pyjrdflogger.py*. Proposal implementation should be fine for single-threaded use. However it would be good idea to have real implementation to address possible use of [pyjanitor](pyjanitor.md) transformations from multiple threads. I don't see any other obvious places where proposed implementation can break.
