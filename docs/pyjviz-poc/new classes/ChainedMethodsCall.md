@@ -1,8 +1,8 @@
-CMC - Chained Methods Call. This is the term to describe usual for pyjanitor (and many other tools and context) situation when subsequent calls of certain methods are done on previously returned object.
+Chained Methods Call (CMC) - the term to describe usual for [pyjanitor](pyjanitor.md) and many other tools and contexts situation when subsequent calls of certain methods are done on previously returned object.
 
-ChinedMethodsCall is implementation of an idea to introduce chain of method calls as  real object rather than language idiom. Chained methods call can viewed as another way to express function composition:
+ChinedMethodsCall is implementation of an idea to introduce chain of method calls as  real object rather than language idiom. Chained methods can viewed as another way to express function composition:
 $$
-a.m1().m2().m3() \leftrightarrow m3(m2(m1(a))) \leftrightarrow m1 \circ m2 \circ m3
+a.m1().m2().m3() \leftrightarrow m3(m2(m1(a))) \leftrightarrow (m1 \circ m2 \circ m3)(a)
 $$
 
 Consider an example from https://github.com/pyjanitor-devs/pyjanitor/blob/dev/examples/notebooks/dirty_data.ipynb cell 5:
@@ -20,14 +20,14 @@ df
 This is an example of CMC idea in use: each new method call of object df returns something which can be use for next method call ChainedMethodsCall [tbc](tbc.md) is to provide some additional functionality: it will same some additional rdf triples into program log: [tbc](tbc.md) **check can the code below survive copy/paste**
 
 ```python
-df_clean_cmp = ChainedMethodsCall("from_dirty_to_clean", 
+df_clean_cmc = ChainedMethodsCall("from_dirty_to_clean", 
 								  lambda: df \
 									.clean_names()
 									.remove_empty()
 									.rename_column("%_allocated", "percent_allocated")
 									.rename_column("full_time_", "full_time"))
 
-df_clean = df_clean_cmp.run()
+df_clean = df_clean_cmc.run()
 ```
 
 ## Chained Methods Call - some details

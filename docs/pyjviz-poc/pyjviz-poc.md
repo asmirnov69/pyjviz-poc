@@ -1,3 +1,5 @@
+[pyjviz-poc](https://github.com/asmirnov69/pyjviz-poc) is github repo with proposal to implement [pyjanitor](pyjanitor.md) transforms visualization using [[RDF]]-related tools.
+
 # dependencies
 
 ```mermaid
