@@ -1,4 +1,4 @@
-Chained Methods Call (CMC) - the term to describe usual for [pyjanitor](pyjanitor.md) and many other tools and contexts situation when subsequent calls of certain methods are done on previously returned object.
+Chained Methods Call (CMC) - the term to describe usual for [pyjanitor][] and many other tools and contexts situation when subsequent calls of certain methods are done on previously returned object.
 
 ChinedMethodsCall is implementation of an idea to introduce chain of method calls as  real object rather than language idiom. Chained methods can viewed as another way to express function composition:
 $$
@@ -36,9 +36,7 @@ CMC - chained methods call - term to designate used by pyj language construction
 
 ```python
 
-# scetch
-
-class ChainedMethodCall:
+class planned_ChainedMethodCall:
 
 	def __init__(self, name, cmc_func):
 		self.name = name
@@ -94,3 +92,6 @@ left_df, right_df = df1.aaa().fork("left", lambda x: x.left(), "right", lambda x
 call_cmp("left", lambda: left_df.ccc().join(call_cmp("right", right_df.ccc()))
 
 ```
+
+----
+[pyjanitor]: https://github.com/pyjanitor-devs/pyjanitor
