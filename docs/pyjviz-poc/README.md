@@ -1,6 +1,8 @@
-[pyjviz-poc][] is github repo with proposal to implement [pyjanitor][] transforms visualization using [[RDF]] -related tools.
+[pyjviz-poc][pyjviz-poc] is github repo with proposal to implement [pyjanitor][] transforms visualization using [[RDF]] -related tools.
 
 # Code highlights
+
+^1ffe2d
 
 ## dependencies
 
@@ -28,7 +30,7 @@ NOTE that creation of rdf log does not require any external modules. Triples cor
 Static method [*RDFLogger.init*](https://github.com/asmirnov69/pyjviz-poc/blob/29f16f1ae39ac6e6d5338bb424781681b3572a1a/janitor/pyjrdflogger.py#L48) suppose to be called before program execution starts to open rdf log file and setup global *pandas_call_reporting_obj* from *register.py* to point to instance of *RDFLogger*. 
 
 ### class ChainedMethodsCall
-Class [*ChainedMethodsCall*][] is a wrapper which can be used along with language idiom - lambda with empty argument list. It creates convenient syntax for chained methods call:
+Class [[ChainedMethodsCall]] is a wrapper which can be used along with language idiom - lambda with empty argument list. It creates convenient syntax for chained methods call:
 
 ```python
 res = a.m1().m2().m3() # chained method call
@@ -50,8 +52,7 @@ The steps to implement the proposal as set of new pyjanitor features are outline
 
 ## modifications in pandas_flavor module
 
-[pandas_flavor](pandas_flavor.md) has to be done to place method call interception logic to (optionally) pass of collected method call name and args to [[RDFLogger]] methods. [README](README.md) provides its own version of register.py to implement required logic for the case of pandas dataframe - https://github.com/asmirnov69/pyjviz-poc/blob/ab322f5342f9471bfb9d748bf551bb7f3d5a333e/janitor/register.py#L48
-All other cases supported by [pyjanitor](pyjanitor.md) would require similar modifications.
+[pandas_flavor](pandas_flavor.md) has to be done to place method call interception logic to (optionally) pass of collected method call name and args to [[RDFLogger]] methods. pyjviz-poc provides its own version of register.py to implement [required logic](https://github.com/asmirnov69/pyjviz-poc/blob/ab322f5342f9471bfb9d748bf551bb7f3d5a333e/janitor/register.py#L48) for the case of pandas dataframe. All other cases supported by [pyjanitor](pyjanitor.md) would require similar modifications.
 
 ## modifications in pyjanitor module
 
@@ -70,14 +71,13 @@ NOTE that neither class introduce additional dependencies if *RDFLogger* is used
 *pyjviz.py* implementation uses [[rdflib]] and [graphviz](graphviz.md) modules. Those are new dependencies for *pyjanitor*. Strictly speaking *pyjviz.py* doesn't have to be part of [[pyjanitor]] module. [[rdflib]] is used to build and query graph created by [[RDFLogger]] using system IO facilities only.
 
 # Further development
-
 ^d40b47
-
-## introduce SHACL schema for RDFLogger output
-SHACL schema provide the way to describe the [RDFLogger](RDFLogger.md) output using SHACL definitions. It will provide the way to start using rdf logs as parts of bigger knowledge bases.
 
 ## user-defined additions to RDFLogger output
 [[tbc]]users of *pyjanitor* would possibly find useful ways of feature where they can insert additional rdf triples into rdf logs produced by their code. applications are numerous - visualizations, data catalogs, support for data exploration, ETL support.
+
+## SHACL schema for RDFLogger output
+SHACL schema provide the way to describe the [RDFLogger](RDFLogger.md) output using SHACL definitions. It will provide the way to start using rdf logs as parts of bigger knowledge bases.
 
 ## build pyjanitor code static analysis and visualizer
 It seems to be possible task to write python code for static analysis and visualization of [ChainedMethodsCall](ChainedMethodsCall.md) usage in user's and other related to *pyjanitor* code which will be based [python3 annotations](python3%20annotations) and code docstrings. The tool will generate rdf dataset which could be compatible with [RDFLogger](RDFLogger.md) output. Main purpose of doing that would be to allow visualizations of *pyjanitor* code before run-time.
@@ -94,4 +94,4 @@ This is very big task in graph database visualization space. It could be started
 [pandas_call_reporting_obj]: https://github.com/asmirnov69/pyjviz-poc/blob/29f16f1ae39ac6e6d5338bb424781681b3572a1a/janitor/register.py#L31
 [RDFLogger]: https://github.com/asmirnov69/pyjviz-poc/blob/29f16f1ae39ac6e6d5338bb424781681b3572a1a/janitor/pyjrdflogger.py#L46
 [handle_dataframe_method_call]: https://github.com/asmirnov69/pyjviz-poc/blob/29f16f1ae39ac6e6d5338bb424781681b3572a1a/janitor/pyjrdflogger.py#L102
-[ChainedMethodsCall]: https://github.com/asmirnov69/pyjviz-poc/blob/29f16f1ae39ac6e6d5338bb424781681b3572a1a/janitor/pyjrdflogger.py#L29
+
