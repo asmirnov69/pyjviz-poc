@@ -1,10 +1,6 @@
-# RDF  as tool for software engineering
-It used to be XML. XML heavy promotion produced some results but overall didn't meet the expectations.
-RDF is exactly opposite story: [[tbc]]
+# Intro
 
-# RDF intro
-
-[RDF](RDF.md) is [Resource Definition Format](https://www.w3.org/RDF/) introduced to standardize particular knowledge graph representation which uses *triples*. To get better idea look at this examples from [RDF 1.1 Primer](https://www.w3.org/TR/rdf11-primer/) First example from section 3.1 looks like most important so I will use that below.
+RDF is [Resource Definition Format](https://www.w3.org/RDF/) introduced to standardize particular knowledge graph representation which uses *triples*. To get better idea look at this examples from [RDF 1.1 Primer](https://www.w3.org/TR/rdf11-primer/) First example from section 3.1 looks like most important so I will use that below.
 
 RDF dataset is actually set of *triples* where each triple has parts called *subject*, *predicate* and *object*:
 ```
@@ -46,7 +42,7 @@ As you see RDF statements form *directed graph with labeled edges*. Nodes of thi
 
 # How object-oriented oriented programming is related to example above?
 
-Object-oriented programming (OOP) is related to RDF listing and RDF graph from section above is very important way. Both OOP and RDF introduce *classes* as the way describe something we want to describe. E.g. example of python code below defines classes Person and FamousPainting and then all additional objects to create setup logically equivalent to RDF listing and graph from prev section
+Object-oriented programming (OOP) is related to RDF listing and RDF graph from section above is very important way. Both OOP and RDF introduce *classes*. E.g. example of python code below defines class *Person* and class *FamousPainting* and all additional objects to create setup logically equivalent to RDF dataset and graph from prev section
 
 ```python
 class Person:
@@ -69,16 +65,14 @@ joconda.was_created_by = leonardo
 bob.is_interested_in = joconda
 ```
 
-Subtle points here are:
-- what exactly is Person and FamousPainting
-- why there is no *is_a* mention in `__init__` method of both python classes.
+Interesting question to ask at this point: why there is no *is_a* mention in `__init__` method of both python classes.
 
 The reason why no *is_a* mentioned is it is not necessary since we specify this piece of knowledge when we create python objects of particular python class. I.e. when RDF triple with predicate *is_a* is created it can be interpreted in python code just statement like
 ```python
 bob = Person()
 ```
 
-Then it become clear what are Person and FamousPainting in RDF listing are - THEY are *classes*. I.e. Bob, Alice, Leonardo Da Vinci belong to class Person. Mona Lisa painting is actually a well-known instance (or OOP object) which belongs to class FamousPainting.
+Then it become clear what are *Person* and *FamousPainting* in RDF listing are - THEY are *classes*. I.e. Bob, Alice, Leonardo Da Vinci belong to class *Person*. Mona Lisa painting is actually a well-known instance (or OOP object) which belongs to class *FamousPainting*.
 
 This is fundamental observation and it is stated in RDF-based knowledge bases using special predicate [rdf:type](https://en.wikipedia.org/wiki/RDF_Schema)
 # Alternative view on classes
@@ -98,7 +92,7 @@ But there are good news in the RDF world.
 
 ## SPARQL
 
-The first really good news is once you defined something using RDF you can immediately start using SPARQL:
+The first really good news is once you defined something using RDF you can immediately start using [[SPARQL]]:
 
 ```
 select ?p ?pi 
@@ -116,7 +110,9 @@ The query will give all persons interested in famous paitings.
 
 ## SHACL
 
-The other good news is you can create RDF dataset and use SHACL tools to verify that practically important constrains are not violated.
+^ac6f28
+
+The other good news is you can create RDF dataset and use [[SHACL]] tools to verify that practically important constrains are not violated.
 This would address serious problem with practical usage of RDF datasets. Since RDF itself does not mandate anything about triples you can quickly arrive to chaotic situation when e.g. Bob may have two birthdays defined:
 
 ...
