@@ -7,4 +7,7 @@ ex:FamousPainting a rdfs:Class; rdfs:subClassOf ex:Painting .
 
 ex:the_Mona_Lisa rdf:type ex:FamousPainting;
 	ex:name "Mona Lisa" .
+
+ex:the_Night_Watch rdf:type ex:FamousPainting .
+
 #:black_square rdf:type :ControversialPainting .
