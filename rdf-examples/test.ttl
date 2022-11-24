@@ -1,0 +1,10 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <> .
+
+ex:Painting a rdfs:Class .
+ex:FamousPainting a rdfs:Class; rdfs:subClassOf ex:Painting .
+
+ex:the_Mona_Lisa rdf:type ex:FamousPainting;
+	ex:name "Mona Lisa" .
+#:black_square rdf:type :ControversialPainting .
