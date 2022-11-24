@@ -5,11 +5,15 @@
 @prefix dash: <http://datashapes.org/dash#> .
 
 <Painting> a rdfs:Class .
-<FamousPainting> rdfs:subClassOf <Painting> .
+<FamousPainting> a rdfs:Class; rdfs:subClassOf <Painting> .
+<ControversialPainting> a rdfs:Class; rdfs:subClassOf <Painting> .
 
 <Painting> a sh:NodeShape;
-	   dash:closedByTypes true .
+	   dash:closedByTypes true.
+<Painting> sh:property [sh:path <name>; sh:minCount 1].
 
-<FamousPainting> a sh:NodeShape .		
+<FamousPainting> a sh:NodeShape;
+		 sh:property [sh:path <price>; sh:minCount 1].
 
-# :ControversialPainting rdfs:subClassOf :Painting .
+<ControversialPainting> a sh:NodeShape.
+

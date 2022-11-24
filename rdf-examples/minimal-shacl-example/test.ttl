@@ -3,11 +3,15 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <Painting> a rdfs:Class .
-<FamousPainting> rdfs:subClassOf <Painting> .
+<FamousPainting> a rdfs:Class; rdfs:subClassOf <Painting> .
+<ControversialPainting> a rdfs:Class; rdfs:subClassOf <Painting> .
 
 <the_Mona_Lisa> rdf:type <FamousPainting>;
-	<name> "Mona Lisa" .
+	<name> "Mona Lisa"; <price> "+inf" .
 
-<the_Night_Watch> rdf:type <FamousPainting> .
+<the_Night_Watch> rdf:type <FamousPainting>;
+		  <name> "Night Watch".
+# <the_Night_Watch> <price> "+inf-1" .
 
-#:black_square rdf:type :ControversialPainting .
+<the_Black_Square> rdf:type <ControversialPainting>.
+# <the_Black_Square> <name> "Black Square".
