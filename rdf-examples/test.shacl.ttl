@@ -4,10 +4,12 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix dash: <http://datashapes.org/dash#> .
 
-<Painting> a rdfs:Class, sh:NodeShape;
-	  dash:closedByTypes true .
+<Painting> a rdfs:Class .
+<FamousPainting> rdfs:subClassOf <Painting> .
 
-<FamousPainting> a rdfs:Class, sh:NodeShape;
-		rdfs:subClassOf <Painting> .
+<Painting> a sh:NodeShape;
+	   dash:closedByTypes true .
+
+<FamousPainting> a sh:NodeShape .		
 
 # :ControversialPainting rdfs:subClassOf :Painting .

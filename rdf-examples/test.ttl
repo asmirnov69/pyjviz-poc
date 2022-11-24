@@ -3,7 +3,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <Painting> a rdfs:Class .
-<FamousPainting> a rdfs:Class; rdfs:subClassOf <Painting> .
+<FamousPainting> rdfs:subClassOf <Painting> .
 
 <the_Mona_Lisa> rdf:type <FamousPainting>;
 	<name> "Mona Lisa" .
