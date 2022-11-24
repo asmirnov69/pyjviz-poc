@@ -1,13 +1,13 @@
+@base <http://pyj.com/hihi#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix dash: <http://datashapes.org/dash#> .
-@prefix ex: <http://e.c/> .
 
-ex:Painting a rdfs:Class, sh:NodeShape;
+<Painting> a rdfs:Class, sh:NodeShape;
 	  dash:closedByTypes true .
 
-ex:FamousPainting a rdfs:Class, sh:NodeShape;
-		rdfs:subClassOf ex:Painting .
+<FamousPainting> a rdfs:Class, sh:NodeShape;
+		rdfs:subClassOf <Painting> .
 
 # :ControversialPainting rdfs:subClassOf :Painting .

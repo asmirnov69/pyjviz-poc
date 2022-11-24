@@ -6,4 +6,6 @@ if __name__ == "__main__":
     g = rdflib.Graph()
     g.parse(rdflog_ttl_fn)
     print(g)
-    
+    for spo in g:
+        print(spo)
+        
