@@ -9,10 +9,12 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 888)">
 <title>G</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-888 560,-888 560,4 -4,4"/>
-<!-- node_d4440151178382095101 -->
+<!-- node_d1925401119718709256 -->
 <g id="node1" class="node">
-<title>node_d4440151178382095101</title>
-<g id="a_node1"><a xlink:href="tmp/tmplyfzp2ng.html" xlink:title="&lt;TABLE&gt;">
+<title>node_d1925401119718709256</title>
+<g id="a_node1"><a xlink:href="javascript:
+                { window.open(location.pathname.match(/.*\//) + 'tmp/' + 'tmp71322j7a.html', '_blank', 'width=800,height=200'); }
+            " xlink:title="&lt;TABLE&gt;">
 <polygon fill="#880000" fill-opacity="0.133333" stroke="#880000" stroke-opacity="0.133333" points="347.5,-884 208.5,-884 208.5,-840 347.5,-840 347.5,-884"/>
 <text text-anchor="start" x="240.5" y="-865.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> </text>
 <text text-anchor="start" x="244.5" y="-865.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">ObjState#0</text>
@@ -20,26 +22,28 @@
 </a>
 </g>
 </g>
-<!-- node_244317265836119455 -->
+<!-- node_312854619460268921 -->
 <g id="node7" class="node">
-<title>node_244317265836119455</title>
+<title>node_312854619460268921</title>
 <polygon fill="lightgrey" stroke="transparent" points="456,-789 100,-789 100,-753 456,-753 456,-789"/>
 <text text-anchor="start" x="112" y="-767.8" font-family="Helvetica,Arial,sans-serif" font-style="italic" font-size="14.00">remove_columns</text>
 <text text-anchor="start" x="217" y="-767.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> &#160;(</text>
 <text text-anchor="start" x="230" y="-767.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">df</text>
 <text text-anchor="start" x="243" y="-767.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">, column_names = [&#39;Company1&#39;])</text>
 </g>
-<!-- node_d4440151178382095101&#45;&gt;node_244317265836119455 -->
+<!-- node_d1925401119718709256&#45;&gt;node_312854619460268921 -->
 <g id="edge1" class="edge">
-<title>node_d4440151178382095101&#45;&gt;node_244317265836119455</title>
+<title>node_d1925401119718709256&#45;&gt;node_312854619460268921</title>
 <path fill="none" stroke="black" d="M278,-839.91C278,-827.78 278,-812.41 278,-799.36"/>
 <polygon fill="black" stroke="black" points="281.5,-799.07 278,-789.07 274.5,-799.07 281.5,-799.07"/>
 <text text-anchor="middle" x="284" y="-810.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">df</text>
 </g>
-<!-- node_d6564688747986005786 -->
+<!-- node_d1767550361702597898 -->
 <g id="node2" class="node">
-<title>node_d6564688747986005786</title>
-<g id="a_node2"><a xlink:href="tmp/tmpjmpi_90k.html" xlink:title="&lt;TABLE&gt;">
+<title>node_d1767550361702597898</title>
+<g id="a_node2"><a xlink:href="javascript:
+                { window.open(location.pathname.match(/.*\//) + 'tmp/' + 'tmpn5ckfitb.html', '_blank', 'width=800,height=200'); }
+            " xlink:title="&lt;TABLE&gt;">
 <polygon fill="#880000" fill-opacity="0.133333" stroke="#880000" stroke-opacity="0.133333" points="347.5,-716 208.5,-716 208.5,-672 347.5,-672 347.5,-716"/>
 <text text-anchor="start" x="240.5" y="-697.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> </text>
 <text text-anchor="start" x="244.5" y="-697.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">ObjState#2</text>
@@ -47,26 +51,28 @@
 </a>
 </g>
 </g>
-<!-- node_8798642703743187290 -->
+<!-- node_4667729886290984834 -->
 <g id="node8" class="node">
-<title>node_8798642703743187290</title>
+<title>node_4667729886290984834</title>
 <polygon fill="lightgrey" stroke="transparent" points="471,-621 85,-621 85,-585 471,-585 471,-621"/>
 <text text-anchor="start" x="97" y="-599.8" font-family="Helvetica,Arial,sans-serif" font-style="italic" font-size="14.00">dropna</text>
 <text text-anchor="start" x="140" y="-599.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> &#160;(</text>
 <text text-anchor="start" x="153" y="-599.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">df</text>
 <text text-anchor="start" x="166" y="-599.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">, kwargs = {&#39;subset&#39;: [&#39;Company2&#39;, &#39;Company3&#39;]})</text>
 </g>
-<!-- node_d6564688747986005786&#45;&gt;node_8798642703743187290 -->
+<!-- node_d1767550361702597898&#45;&gt;node_4667729886290984834 -->
 <g id="edge3" class="edge">
-<title>node_d6564688747986005786&#45;&gt;node_8798642703743187290</title>
+<title>node_d1767550361702597898&#45;&gt;node_4667729886290984834</title>
 <path fill="none" stroke="black" d="M278,-671.91C278,-659.78 278,-644.41 278,-631.36"/>
 <polygon fill="black" stroke="black" points="281.5,-631.07 278,-621.07 274.5,-631.07 281.5,-631.07"/>
 <text text-anchor="middle" x="284" y="-642.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">df</text>
 </g>
-<!-- node_d1226167559715751303 -->
+<!-- node_1801763357847725836 -->
 <g id="node3" class="node">
-<title>node_d1226167559715751303</title>
-<g id="a_node3"><a xlink:href="tmp/tmp86s9yw2j.html" xlink:title="&lt;TABLE&gt;">
+<title>node_1801763357847725836</title>
+<g id="a_node3"><a xlink:href="javascript:
+                { window.open(location.pathname.match(/.*\//) + 'tmp/' + 'tmpwryakaj8.html', '_blank', 'width=800,height=200'); }
+            " xlink:title="&lt;TABLE&gt;">
 <polygon fill="#880000" fill-opacity="0.133333" stroke="#880000" stroke-opacity="0.133333" points="347.5,-548 208.5,-548 208.5,-504 347.5,-504 347.5,-548"/>
 <text text-anchor="start" x="240.5" y="-529.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> </text>
 <text text-anchor="start" x="244.5" y="-529.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">ObjState#4</text>
@@ -74,26 +80,28 @@
 </a>
 </g>
 </g>
-<!-- node_d4278266345188361779 -->
+<!-- node_3745835897437221982 -->
 <g id="node9" class="node">
-<title>node_d4278266345188361779</title>
+<title>node_3745835897437221982</title>
 <polygon fill="lightgrey" stroke="transparent" points="552,-453 4,-453 4,-417 552,-417 552,-453"/>
 <text text-anchor="start" x="16" y="-431.8" font-family="Helvetica,Arial,sans-serif" font-style="italic" font-size="14.00">rename_column</text>
 <text text-anchor="start" x="115" y="-431.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> &#160;(</text>
 <text text-anchor="start" x="128" y="-431.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">df</text>
 <text text-anchor="start" x="141" y="-431.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">, old_column_name = Company2, new_column_name = Amazon)</text>
 </g>
-<!-- node_d1226167559715751303&#45;&gt;node_d4278266345188361779 -->
+<!-- node_1801763357847725836&#45;&gt;node_3745835897437221982 -->
 <g id="edge5" class="edge">
-<title>node_d1226167559715751303&#45;&gt;node_d4278266345188361779</title>
+<title>node_1801763357847725836&#45;&gt;node_3745835897437221982</title>
 <path fill="none" stroke="black" d="M278,-503.91C278,-491.78 278,-476.41 278,-463.36"/>
 <polygon fill="black" stroke="black" points="281.5,-463.07 278,-453.07 274.5,-463.07 281.5,-463.07"/>
 <text text-anchor="middle" x="284" y="-474.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">df</text>
 </g>
-<!-- node_d199816967857226359 -->
+<!-- node_5579579457091503170 -->
 <g id="node4" class="node">
-<title>node_d199816967857226359</title>
-<g id="a_node4"><a xlink:href="tmp/tmpvyglgn5e.html" xlink:title="&lt;TABLE&gt;">
+<title>node_5579579457091503170</title>
+<g id="a_node4"><a xlink:href="javascript:
+                { window.open(location.pathname.match(/.*\//) + 'tmp/' + 'tmpo495518x.html', '_blank', 'width=800,height=200'); }
+            " xlink:title="&lt;TABLE&gt;">
 <polygon fill="#880000" fill-opacity="0.133333" stroke="#880000" stroke-opacity="0.133333" points="347.5,-380 208.5,-380 208.5,-336 347.5,-336 347.5,-380"/>
 <text text-anchor="start" x="240.5" y="-361.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> </text>
 <text text-anchor="start" x="244.5" y="-361.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">ObjState#6</text>
@@ -101,26 +109,28 @@
 </a>
 </g>
 </g>
-<!-- node_1141035519506185473 -->
+<!-- node_d6683813030730753885 -->
 <g id="node10" class="node">
-<title>node_1141035519506185473</title>
+<title>node_d6683813030730753885</title>
 <polygon fill="lightgrey" stroke="transparent" points="556,-285 0,-285 0,-249 556,-249 556,-285"/>
 <text text-anchor="start" x="12" y="-263.8" font-family="Helvetica,Arial,sans-serif" font-style="italic" font-size="14.00">rename_column</text>
 <text text-anchor="start" x="111" y="-263.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> &#160;(</text>
 <text text-anchor="start" x="124" y="-263.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">df</text>
 <text text-anchor="start" x="137" y="-263.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">, old_column_name = Company3, new_column_name = Facebook)</text>
 </g>
-<!-- node_d199816967857226359&#45;&gt;node_1141035519506185473 -->
+<!-- node_5579579457091503170&#45;&gt;node_d6683813030730753885 -->
 <g id="edge7" class="edge">
-<title>node_d199816967857226359&#45;&gt;node_1141035519506185473</title>
+<title>node_5579579457091503170&#45;&gt;node_d6683813030730753885</title>
 <path fill="none" stroke="black" d="M278,-335.91C278,-323.78 278,-308.41 278,-295.36"/>
 <polygon fill="black" stroke="black" points="281.5,-295.07 278,-285.07 274.5,-295.07 281.5,-295.07"/>
 <text text-anchor="middle" x="284" y="-306.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">df</text>
 </g>
-<!-- node_d5096477017172757485 -->
+<!-- node_6105894577028321164 -->
 <g id="node5" class="node">
-<title>node_d5096477017172757485</title>
-<g id="a_node5"><a xlink:href="tmp/tmpsdnaxlul.html" xlink:title="&lt;TABLE&gt;">
+<title>node_6105894577028321164</title>
+<g id="a_node5"><a xlink:href="javascript:
+                { window.open(location.pathname.match(/.*\//) + 'tmp/' + 'tmp6qn_tw0m.html', '_blank', 'width=800,height=200'); }
+            " xlink:title="&lt;TABLE&gt;">
 <polygon fill="#880000" fill-opacity="0.133333" stroke="#880000" stroke-opacity="0.133333" points="347.5,-212 208.5,-212 208.5,-168 347.5,-168 347.5,-212"/>
 <text text-anchor="start" x="240.5" y="-193.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> </text>
 <text text-anchor="start" x="244.5" y="-193.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">ObjState#8</text>
@@ -128,26 +138,28 @@
 </a>
 </g>
 </g>
-<!-- node_d91233967576882338 -->
+<!-- node_1991455860894400415 -->
 <g id="node11" class="node">
-<title>node_d91233967576882338</title>
+<title>node_1991455860894400415</title>
 <polygon fill="lightgrey" stroke="transparent" points="509.5,-117 46.5,-117 46.5,-81 509.5,-81 509.5,-117"/>
 <text text-anchor="start" x="59" y="-95.8" font-family="Helvetica,Arial,sans-serif" font-style="italic" font-size="14.00">add_column</text>
 <text text-anchor="start" x="134" y="-95.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> &#160;(</text>
 <text text-anchor="start" x="147" y="-95.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">df</text>
 <text text-anchor="start" x="160" y="-95.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">, column_name = Google, value = [450.0, 550.0, 800.0])</text>
 </g>
-<!-- node_d5096477017172757485&#45;&gt;node_d91233967576882338 -->
+<!-- node_6105894577028321164&#45;&gt;node_1991455860894400415 -->
 <g id="edge9" class="edge">
-<title>node_d5096477017172757485&#45;&gt;node_d91233967576882338</title>
+<title>node_6105894577028321164&#45;&gt;node_1991455860894400415</title>
 <path fill="none" stroke="black" d="M278,-167.91C278,-155.78 278,-140.41 278,-127.36"/>
 <polygon fill="black" stroke="black" points="281.5,-127.07 278,-117.07 274.5,-127.07 281.5,-127.07"/>
 <text text-anchor="middle" x="284" y="-138.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00">df</text>
 </g>
-<!-- node_d4914060686385518794 -->
+<!-- node_d1656989951652263614 -->
 <g id="node6" class="node">
-<title>node_d4914060686385518794</title>
-<g id="a_node6"><a xlink:href="tmp/tmpfczhxfrl.html" xlink:title="&lt;TABLE&gt;">
+<title>node_d1656989951652263614</title>
+<g id="a_node6"><a xlink:href="javascript:
+                { window.open(location.pathname.match(/.*\//) + 'tmp/' + 'tmp78n74ntn.html', '_blank', 'width=800,height=200'); }
+            " xlink:title="&lt;TABLE&gt;">
 <polygon fill="#880000" fill-opacity="0.133333" stroke="#880000" stroke-opacity="0.133333" points="347.5,-44 208.5,-44 208.5,0 347.5,0 347.5,-44"/>
 <text text-anchor="start" x="237" y="-25.8" font-family="Helvetica,Arial,sans-serif" font-size="14.00"> </text>
 <text text-anchor="start" x="241" y="-25.8" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="14.00">ObjState#10</text>
@@ -155,33 +167,33 @@
 </a>
 </g>
 </g>
-<!-- node_244317265836119455&#45;&gt;node_d6564688747986005786 -->
+<!-- node_312854619460268921&#45;&gt;node_d1767550361702597898 -->
 <g id="edge2" class="edge">
-<title>node_244317265836119455&#45;&gt;node_d6564688747986005786</title>
+<title>node_312854619460268921&#45;&gt;node_d1767550361702597898</title>
 <path fill="none" stroke="black" d="M278,-752.98C278,-745.15 278,-735.61 278,-726.54"/>
 <polygon fill="black" stroke="black" points="281.5,-726.24 278,-716.24 274.5,-726.24 281.5,-726.24"/>
 </g>
-<!-- node_8798642703743187290&#45;&gt;node_d1226167559715751303 -->
+<!-- node_4667729886290984834&#45;&gt;node_1801763357847725836 -->
 <g id="edge4" class="edge">
-<title>node_8798642703743187290&#45;&gt;node_d1226167559715751303</title>
+<title>node_4667729886290984834&#45;&gt;node_1801763357847725836</title>
 <path fill="none" stroke="black" d="M278,-584.98C278,-577.15 278,-567.61 278,-558.54"/>
 <polygon fill="black" stroke="black" points="281.5,-558.24 278,-548.24 274.5,-558.24 281.5,-558.24"/>
 </g>
-<!-- node_d4278266345188361779&#45;&gt;node_d199816967857226359 -->
+<!-- node_3745835897437221982&#45;&gt;node_5579579457091503170 -->
 <g id="edge6" class="edge">
-<title>node_d4278266345188361779&#45;&gt;node_d199816967857226359</title>
+<title>node_3745835897437221982&#45;&gt;node_5579579457091503170</title>
 <path fill="none" stroke="black" d="M278,-416.98C278,-409.15 278,-399.61 278,-390.54"/>
 <polygon fill="black" stroke="black" points="281.5,-390.24 278,-380.24 274.5,-390.24 281.5,-390.24"/>
 </g>
-<!-- node_1141035519506185473&#45;&gt;node_d5096477017172757485 -->
+<!-- node_d6683813030730753885&#45;&gt;node_6105894577028321164 -->
 <g id="edge8" class="edge">
-<title>node_1141035519506185473&#45;&gt;node_d5096477017172757485</title>
+<title>node_d6683813030730753885&#45;&gt;node_6105894577028321164</title>
 <path fill="none" stroke="black" d="M278,-248.98C278,-241.15 278,-231.61 278,-222.54"/>
 <polygon fill="black" stroke="black" points="281.5,-222.24 278,-212.24 274.5,-222.24 281.5,-222.24"/>
 </g>
-<!-- node_d91233967576882338&#45;&gt;node_d4914060686385518794 -->
+<!-- node_1991455860894400415&#45;&gt;node_d1656989951652263614 -->
 <g id="edge10" class="edge">
-<title>node_d91233967576882338&#45;&gt;node_d4914060686385518794</title>
+<title>node_1991455860894400415&#45;&gt;node_d1656989951652263614</title>
 <path fill="none" stroke="black" d="M278,-80.98C278,-73.15 278,-63.61 278,-54.54"/>
 <polygon fill="black" stroke="black" points="281.5,-54.24 278,-44.24 274.5,-54.24 281.5,-54.24"/>
 </g>
