@@ -1,0 +1,113 @@
+
+    digraph G {
+    #splines=false;
+    #ratio=fill;
+    #size="800px,600px";
+    #center=true;
+    rankdir = "TB"
+    fontname="Helvetica,Arial,sans-serif"
+    node [ 
+      style=filled
+      shape=rect
+      pencolor="#00000044" // frames color
+      fontname="Helvetica,Arial,sans-serif"
+      shape=plaintext
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]    
+    
+
+            node_6915671513100047361 [
+            color="#88000022"
+            shape = rect
+            label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+            <tr> <td> <b>ObjState#0</b><br/>DataFrame (4, 4) 0</td> </tr>
+            </table>>
+            href="tmp/tmpt16kh8sh.html"
+            ];
+            
+
+            node_6268073185090137159 [
+            color="#88000022"
+            shape = rect
+            label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+            <tr> <td> <b>ObjState#2</b><br/>DataFrame (4, 3) 0</td> </tr>
+            </table>>
+            href="tmp/tmpd_ffzcp4.html"
+            ];
+            
+
+            node_d3713469276660519829 [
+            color="#88000022"
+            shape = rect
+            label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+            <tr> <td> <b>ObjState#4</b><br/>DataFrame (3, 3) 0</td> </tr>
+            </table>>
+            href="tmp/tmpij_bu_q6.html"
+            ];
+            
+
+            node_6193756191365052904 [
+            color="#88000022"
+            shape = rect
+            label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+            <tr> <td> <b>ObjState#6</b><br/>DataFrame (3, 3) 0</td> </tr>
+            </table>>
+            href="tmp/tmpc3kafay7.html"
+            ];
+            
+
+            node_7982720795740876049 [
+            color="#88000022"
+            shape = rect
+            label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+            <tr> <td> <b>ObjState#8</b><br/>DataFrame (3, 3) 0</td> </tr>
+            </table>>
+            href="tmp/tmpqji_p6l7.html"
+            ];
+            
+
+            node_7619263110713134134 [
+            color="#88000022"
+            shape = rect
+            label = <<table border="0" cellborder="0" cellspacing="0" cellpadding="4">
+            <tr> <td> <b>ObjState#10</b><br/>DataFrame (3, 4) 0</td> </tr>
+            </table>>
+            href="tmp/tmp2eu_4xcg.html"
+            ];
+            
+
+            node_3991110718609449970 [ label = <<TABLE border="0" align="left"><TR><TD><i>remove_columns</i>  (<b>df</b>, column_names = ['Company1'])</TD></TR></TABLE>> ];
+            
+
+            node_d7415071238895031499 [ label = <<TABLE border="0" align="left"><TR><TD><i>dropna</i>  (<b>df</b>, kwargs = {'subset': ['Company2', 'Company3']})</TD></TR></TABLE>> ];
+            
+
+            node_4426932329380230117 [ label = <<TABLE border="0" align="left"><TR><TD><i>rename_column</i>  (<b>df</b>, old_column_name = Company2, new_column_name = Amazon)</TD></TR></TABLE>> ];
+            
+
+            node_d1384073919715366964 [ label = <<TABLE border="0" align="left"><TR><TD><i>rename_column</i>  (<b>df</b>, old_column_name = Company3, new_column_name = Facebook)</TD></TR></TABLE>> ];
+            
+
+            node_d5969552608762490586 [ label = <<TABLE border="0" align="left"><TR><TD><i>add_column</i>  (<b>df</b>, column_name = Google, value = [450.0, 550.0, 800.0])</TD></TR></TABLE>> ];
+            
+
+            node_6915671513100047361 -> node_3991110718609449970 [label="df"];
+            node_3991110718609449970 -> node_6268073185090137159;
+            
+
+            node_6268073185090137159 -> node_d7415071238895031499 [label="df"];
+            node_d7415071238895031499 -> node_d3713469276660519829;
+            
+
+            node_d3713469276660519829 -> node_4426932329380230117 [label="df"];
+            node_4426932329380230117 -> node_6193756191365052904;
+            
+
+            node_6193756191365052904 -> node_d1384073919715366964 [label="df"];
+            node_d1384073919715366964 -> node_7982720795740876049;
+            
+
+            node_7982720795740876049 -> node_d5969552608762490586 [label="df"];
+            node_d5969552608762490586 -> node_7619263110713134134;
+            
+}
